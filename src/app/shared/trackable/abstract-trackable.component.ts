@@ -1,21 +1,16 @@
-import {
-  Component,
-  OnInit,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-
 import { ObjectUpdatesService } from '../../core/data/object-updates/object-updates.service';
 import { NotificationsService } from '../notifications/notifications.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 /**
  * Abstract Component that is able to track changes made in the inheriting component using the ObjectUpdateService
  */
 @Component({
   selector: 'ds-abstract-trackable',
-  template: '',
-  standalone: true,
+  template: ''
 })
 export class AbstractTrackableComponent implements OnInit {
 
@@ -51,7 +46,7 @@ export class AbstractTrackableComponent implements OnInit {
    * Shows a notification to remind the user that they can undo this
    */
   discard() {
-    const undoNotification = this.notificationsService.info(this.getNotificationTitle('discarded'), this.getNotificationContent('discarded'), { timeOut: this.discardTimeOut });
+    const undoNotification = this.notificationsService.info(this.getNotificationTitle('discarded'), this.getNotificationContent('discarded'), {timeOut: this.discardTimeOut});
     this.objectUpdatesService.discardFieldUpdates(this.url, undoNotification);
   }
 

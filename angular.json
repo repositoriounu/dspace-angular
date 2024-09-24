@@ -109,22 +109,22 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "buildTarget": "dspace-angular:build",
+            "browserTarget": "dspace-angular:build",
             "port": 4000
           },
           "configurations": {
             "development": {
-              "buildTarget": "dspace-angular:build:development"
+              "browserTarget": "dspace-angular:build:development"
             },
             "production": {
-              "buildTarget": "dspace-angular:build:production"
+              "browserTarget": "dspace-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "dspace-angular:build"
+            "browserTarget": "dspace-angular:build"
           }
         },
         "test": {
@@ -217,23 +217,23 @@
           }
         },
         "serve-ssr": {
-          "builder": "@angular-devkit/build-angular:ssr-dev-server",
+          "builder": "@nguniversal/builders:ssr-dev-server",
           "options": {
-            "buildTarget": "dspace-angular:build",
+            "browserTarget": "dspace-angular:build",
             "serverTarget": "dspace-angular:server",
             "port": 4000
           },
           "configurations": {
             "production": {
-              "buildTarget": "dspace-angular:build:production",
+              "browserTarget": "dspace-angular:build:production",
               "serverTarget": "dspace-angular:server:production"
             }
           }
         },
         "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
+          "builder": "@nguniversal/builders:prerender",
           "options": {
-            "buildTarget": "dspace-angular:build:production",
+            "browserTarget": "dspace-angular:build:production",
             "serverTarget": "dspace-angular:server:production",
             "routes": [
               "/"
@@ -266,8 +266,6 @@
           "options": {
             "lintFilePatterns": [
               "src/**/*.ts",
-              "cypress/**/*.ts",
-              "lint/**/*.ts",
               "src/**/*.html",
               "src/**/*.json5"
             ]

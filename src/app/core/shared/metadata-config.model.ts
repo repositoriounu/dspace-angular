@@ -3,7 +3,7 @@
  */
 export class MetadataConfig {
   /**
-   * A unique identifier
+   * A unique indentifier
    */
   id: string;
 

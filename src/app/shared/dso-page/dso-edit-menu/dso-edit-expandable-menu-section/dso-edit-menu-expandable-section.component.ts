@@ -1,29 +1,13 @@
-import {
-  AsyncPipe,
-  NgComponentOutlet,
-  NgFor,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  Inject,
-  Injector,
-  OnInit,
-} from '@angular/core';
+import { Component, Inject, Injector } from '@angular/core';
+import { rendersSectionForMenu } from 'src/app/shared/menu/menu-section.decorator';
+import { MenuSectionComponent } from 'src/app/shared/menu/menu-section/menu-section.component';
+import { MenuService } from '../../../menu/menu.service';
 import { Router } from '@angular/router';
-import {
-  NgbDropdownModule,
-  NgbTooltipModule,
-} from '@ng-bootstrap/ng-bootstrap';
-import { TranslateModule } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { MenuID } from 'src/app/shared/menu/menu-id.model';
 import { MenuSection } from 'src/app/shared/menu/menu-section.model';
-import { MenuSectionComponent } from 'src/app/shared/menu/menu-section/menu-section.component';
-
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { hasValue } from '../../../empty.util';
-import { MenuService } from '../../../menu/menu.service';
 
 /**
  * Represents an expandable section in the dso edit menus
@@ -32,10 +16,9 @@ import { MenuService } from '../../../menu/menu.service';
   selector: 'ds-dso-edit-menu-expandable-section',
   templateUrl: './dso-edit-menu-expandable-section.component.html',
   styleUrls: ['./dso-edit-menu-expandable-section.component.scss'],
-  standalone: true,
-  imports: [NgbDropdownModule, NgbTooltipModule, NgFor, NgIf, NgComponentOutlet, TranslateModule, AsyncPipe],
 })
-export class DsoEditMenuExpandableSectionComponent extends MenuSectionComponent implements OnInit {
+@rendersSectionForMenu(MenuID.DSO_EDIT, true)
+export class DsoEditMenuExpandableSectionComponent extends MenuSectionComponent {
 
   menuID: MenuID = MenuID.DSO_EDIT;
   itemModel;

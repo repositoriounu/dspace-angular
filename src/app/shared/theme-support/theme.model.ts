@@ -1,31 +1,13 @@
 /* eslint-disable max-classes-per-file */
-import { Injector } from '@angular/core';
-import {
-  combineLatest,
-  Observable,
-  of as observableOf,
-} from 'rxjs';
-import {
-  map,
-  take,
-} from 'rxjs/operators';
-
-import {
-  HandleThemeConfig,
-  NamedThemeConfig,
-  RegExThemeConfig,
-  ThemeConfig,
-  UUIDThemeConfig,
-} from '../../../config/theme.config';
-import { getDSORoute } from '../../app-routing-paths';
+import { hasValue, hasNoValue, isNotEmpty } from '../empty.util';
 import { DSpaceObject } from '../../core/shared/dspace-object.model';
+import { getDSORoute } from '../../app-routing-paths';
 import { HandleObject } from '../../core/shared/handle-object.model';
-import {
-  hasNoValue,
-  hasValue,
-  isNotEmpty,
-} from '../empty.util';
+import { Injector } from '@angular/core';
 import { HandleService } from '../handle.service';
+import { combineLatest, Observable, of as observableOf } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { HandleThemeConfig, NamedThemeConfig, RegExThemeConfig, UUIDThemeConfig, ThemeConfig } from '../../../config/theme.config';
 
 export class Theme {
   constructor(public config: NamedThemeConfig) {
@@ -63,7 +45,7 @@ export class RegExTheme extends Theme {
 export class HandleTheme extends Theme {
 
   constructor(public config: HandleThemeConfig,
-              protected handleService: HandleService,
+              protected handleService: HandleService
   ) {
     super(config);
   }

@@ -1,6 +1,5 @@
 // eslint-disable-next-line import/no-namespace
 import * as deepFreeze from 'deep-freeze';
-
 import {
   RequestConfigureAction,
   RequestErrorAction,
@@ -8,10 +7,10 @@ import {
   RequestRemoveAction,
   RequestStaleAction,
   RequestSuccessAction,
-  ResetResponseTimestampsAction,
+  ResetResponseTimestampsAction
 } from './request.actions';
 import { GetRequest } from './request.models';
-import { requestReducer } from './request.reducer';
+import { requestReducer} from './request.reducer';
 import { RequestEntryState } from './request-entry-state.model';
 import { RequestState } from './request-state.model';
 
@@ -34,26 +33,26 @@ describe('requestReducer', () => {
       request: new GetRequest(id1, link1),
       state: RequestEntryState.RequestPending,
       response: undefined,
-      lastUpdated: undefined,
-    },
+      lastUpdated: undefined
+    }
   };
   const testSuccessState = {
     [id1]: {
       state: RequestEntryState.Success,
-      lastUpdated: 0,
-    },
+      lastUpdated: 0
+    }
   };
   const testErrorState = {
     [id1]: {
       state: RequestEntryState.Error,
-      lastUpdated: 0,
-    },
+      lastUpdated: 0
+    }
   };
   const testResponsePendingState = {
     [id1]: {
       state: RequestEntryState.ResponsePending,
-      lastUpdated: 0,
-    },
+      lastUpdated: 0
+    }
   };
   deepFreeze(testInitState);
   deepFreeze(testSuccessState);
@@ -105,8 +104,8 @@ describe('requestReducer', () => {
       beforeEach(() => {
         startState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.ResponsePending,
-          }),
+            state: RequestEntryState.ResponsePending
+          })
         });
         deepFreeze(startState);
       });
@@ -125,8 +124,8 @@ describe('requestReducer', () => {
       beforeEach(() => {
         startState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.ResponsePendingStale,
-          }),
+            state: RequestEntryState.ResponsePendingStale
+          })
         });
         deepFreeze(startState);
       });
@@ -149,8 +148,8 @@ describe('requestReducer', () => {
       beforeEach(() => {
         startState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.ResponsePending,
-          }),
+            state: RequestEntryState.ResponsePending
+          })
         });
         deepFreeze(startState);
       });
@@ -170,8 +169,8 @@ describe('requestReducer', () => {
       beforeEach(() => {
         startState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.ResponsePendingStale,
-          }),
+            state: RequestEntryState.ResponsePendingStale
+          })
         });
         deepFreeze(startState);
       });
@@ -193,8 +192,8 @@ describe('requestReducer', () => {
     const update = Object.assign({}, testInitState[id1], {
       response: {
         timeCompleted: 10,
-        statusCode: 200,
-      },
+        statusCode: 200
+      }
     });
     const state = Object.assign({}, testInitState, { [id1]: update });
     const timeStamp = 1000;
@@ -222,7 +221,7 @@ describe('requestReducer', () => {
     describe(`when the entry has been removed`, () => {
       it(`shouldn't do anything`, () => {
         const startState = {
-          [id1]: null,
+          [id1]: null
         };
         deepFreeze(startState);
 
@@ -237,8 +236,8 @@ describe('requestReducer', () => {
       it(`shouldn't do anything`, () => {
         const rpsStartState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.ResponsePendingStale,
-          }),
+            state: RequestEntryState.ResponsePendingStale
+          })
         });
         deepFreeze(rpsStartState);
 
@@ -250,8 +249,8 @@ describe('requestReducer', () => {
 
         const ssStartState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.SuccessStale,
-          }),
+            state: RequestEntryState.SuccessStale
+          })
         });
 
         newState = requestReducer(ssStartState, action);
@@ -261,8 +260,8 @@ describe('requestReducer', () => {
 
         const esStartState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.ErrorStale,
-          }),
+            state: RequestEntryState.ErrorStale
+          })
         });
 
         newState = requestReducer(esStartState, action);
@@ -277,8 +276,8 @@ describe('requestReducer', () => {
       it(`shouldn't do anything`, () => {
         const startState = Object.assign({}, testInitState, {
           [id1]: Object.assign({}, testInitState[id1], {
-            state: RequestEntryState.RequestPending,
-          }),
+            state: RequestEntryState.RequestPending
+          })
         });
 
         const action = new RequestStaleAction(id1);

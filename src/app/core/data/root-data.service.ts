@@ -1,27 +1,23 @@
-import { Injectable } from '@angular/core';
-import {
-  Observable,
-  of as observableOf,
-} from 'rxjs';
-import {
-  catchError,
-  map,
-} from 'rxjs/operators';
-
-import { FollowLinkConfig } from '../../shared/utils/follow-link-config.model';
-import { RemoteDataBuildService } from '../cache/builders/remote-data-build.service';
-import { ObjectCacheService } from '../cache/object-cache.service';
-import { HALEndpointService } from '../shared/hal-endpoint.service';
-import { getFirstCompletedRemoteData } from '../shared/operators';
-import { BaseDataService } from './base/base-data.service';
-import { RemoteData } from './remote-data';
-import { RequestService } from './request.service';
 import { Root } from './root.model';
+import { Injectable } from '@angular/core';
+import { ROOT } from './root.resource-type';
+import { RequestService } from './request.service';
+import { RemoteDataBuildService } from '../cache/builders/remote-data-build.service';
+import { HALEndpointService } from '../shared/hal-endpoint.service';
+import { Observable, of as observableOf } from 'rxjs';
+import { RemoteData } from './remote-data';
+import { FollowLinkConfig } from '../../shared/utils/follow-link-config.model';
+import { catchError, map } from 'rxjs/operators';
+import { BaseDataService } from './base/base-data.service';
+import { ObjectCacheService } from '../cache/object-cache.service';
+import { dataService } from './base/data-service.decorator';
+import { getFirstCompletedRemoteData } from '../shared/operators';
 
 /**
  * A service to retrieve the {@link Root} object from the REST API.
  */
-@Injectable({ providedIn: 'root' })
+@Injectable()
+@dataService(ROOT)
 export class RootDataService extends BaseDataService<Root> {
   constructor(
     protected requestService: RequestService,
@@ -37,12 +33,12 @@ export class RootDataService extends BaseDataService<Root> {
    */
   checkServerAvailability(): Observable<boolean> {
     return this.findRoot().pipe(
-      catchError((err: unknown) => {
+      catchError((err ) => {
         console.error(err);
         return observableOf(false);
       }),
       getFirstCompletedRemoteData(),
-      map((rootRd: RemoteData<Root>) => rootRd.statusCode === 200),
+      map((rootRd: RemoteData<Root>) => rootRd.statusCode === 200)
     );
   }
 

@@ -1,53 +1,37 @@
-import {
-  Injectable,
-  Injector,
-} from '@angular/core';
-import {
-  Actions,
-  createEffect,
-  ofType,
-} from '@ngrx/effects';
-import {
-  catchError,
-  filter,
-  map,
-  mergeMap,
-  take,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { Injectable, Injector } from '@angular/core';
 
-import {
-  hasValue,
-  isNotEmpty,
-} from '../../shared/empty.util';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { catchError, filter, map, mergeMap, take, withLatestFrom } from 'rxjs/operators';
+
+import { hasValue, isNotEmpty } from '../../shared/empty.util';
 import { StoreActionTypes } from '../../store.actions';
 import { getClassForType } from '../cache/builders/build-decorators';
-import { ParsedResponse } from '../cache/response.models';
-import { DSpaceSerializer } from '../dspace-rest/dspace.serializer';
-import { DspaceRestService } from '../dspace-rest/dspace-rest.service';
 import { RawRestResponse } from '../dspace-rest/raw-rest-response.model';
+import { DspaceRestService } from '../dspace-rest/dspace-rest.service';
+import { DSpaceSerializer } from '../dspace-rest/dspace.serializer';
 import { XSRFService } from '../xsrf/xsrf.service';
 import {
   RequestActionTypes,
   RequestErrorAction,
   RequestExecuteAction,
   RequestSuccessAction,
-  ResetResponseTimestampsAction,
+  ResetResponseTimestampsAction
 } from './request.actions';
 import { RequestService } from './request.service';
-import { RequestEntry } from './request-entry.model';
+import { ParsedResponse } from '../cache/response.models';
 import { RequestError } from './request-error.model';
 import { RestRequestMethod } from './rest-request-method';
 import { RestRequestWithResponseParser } from './rest-request-with-response-parser.model';
+import { RequestEntry } from './request-entry.model';
 
 @Injectable()
 export class RequestEffects {
 
-  execute = createEffect(() => this.actions$.pipe(
+   execute = createEffect(() => this.actions$.pipe(
     ofType(RequestActionTypes.EXECUTE),
     mergeMap((action: RequestExecuteAction) => {
       return this.requestService.getByUUID(action.payload).pipe(
-        take(1),
+        take(1)
       );
     }),
     filter((entry: RequestEntry) => hasValue(entry)),
@@ -65,17 +49,17 @@ export class RequestEffects {
       return this.restApi.request(request.method, request.href, body, request.options, request.isMultipart).pipe(
         map((data: RawRestResponse) => this.injector.get(request.getResponseParser()).parse(request, data)),
         map((response: ParsedResponse) => new RequestSuccessAction(request.uuid, response.statusCode, response.link, response.unCacheableObject)),
-        catchError((error: unknown) => {
-          if (error instanceof RequestError) {
+        catchError((error: RequestError) => {
+          if (hasValue(error.statusCode)) {
             // if it's an error returned by the server, complete the request
             return [new RequestErrorAction(request.uuid, error.statusCode, error.message)];
           } else {
             // if it's a client side error, throw it
             throw error;
           }
-        }),
+        })
       );
-    }),
+    })
   ));
 
   /**
@@ -86,9 +70,9 @@ export class RequestEffects {
    * This assumes that the server cached everything a negligible
    * time ago, and will likely need to be revisited later
    */
-  fixTimestampsOnRehydrate = createEffect(() => this.actions$
+   fixTimestampsOnRehydrate = createEffect(() => this.actions$
     .pipe(ofType(StoreActionTypes.REHYDRATE),
-      map(() => new ResetResponseTimestampsAction(new Date().getTime())),
+      map(() => new ResetResponseTimestampsAction(new Date().getTime()))
     ));
 
   constructor(

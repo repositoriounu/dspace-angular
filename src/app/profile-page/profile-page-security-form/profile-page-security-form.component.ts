@@ -1,51 +1,23 @@
-import { NgIf } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DynamicFormControlModel, DynamicFormService, DynamicInputModel } from '@ng-dynamic-forms/core';
+import { TranslateService } from '@ngx-translate/core';
 import { UntypedFormGroup } from '@angular/forms';
-import {
-  DynamicFormControlModel,
-  DynamicFormService,
-  DynamicInputModel,
-} from '@ng-dynamic-forms/core';
-import {
-  TranslateModule,
-  TranslateService,
-} from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
-
+import { hasValue, isEmpty } from '../../shared/empty.util';
 import { EPersonDataService } from '../../core/eperson/eperson-data.service';
-import { debounceTimeWorkaround as debounceTime } from '../../core/shared/operators';
-import { AlertComponent } from '../../shared/alert/alert.component';
-import {
-  hasValue,
-  isEmpty,
-} from '../../shared/empty.util';
-import { FormComponent } from '../../shared/form/form.component';
 import { NotificationsService } from '../../shared/notifications/notifications.service';
+import { map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { debounceTimeWorkaround as debounceTime } from '../../core/shared/operators';
 
 @Component({
   selector: 'ds-profile-page-security-form',
-  templateUrl: './profile-page-security-form.component.html',
-  imports: [
-    NgIf,
-    FormComponent,
-    AlertComponent,
-    TranslateModule,
-  ],
-  standalone: true,
+  templateUrl: './profile-page-security-form.component.html'
 })
 /**
  * Component for a user to edit their security information
  * Displays a form containing a password field and a confirmation of the password
  */
-export class ProfilePageSecurityFormComponent implements OnDestroy, OnInit {
+export class ProfilePageSecurityFormComponent implements OnInit {
 
   /**
    * Emits the validity of the password
@@ -75,7 +47,7 @@ export class ProfilePageSecurityFormComponent implements OnDestroy, OnInit {
       name: 'passwordrepeat',
       inputType: 'password',
       autoComplete: 'new-password',
-    }),
+    })
   ];
 
   /**
@@ -129,8 +101,8 @@ export class ProfilePageSecurityFormComponent implements OnDestroy, OnInit {
     this.subs.push(
       this.formGroup.statusChanges.pipe(
         debounceTime(300),
-        map((status: string) => status !== 'VALID'),
-      ).subscribe((status) => this.isInvalid.emit(status)),
+        map((status: string) => status !== 'VALID')
+      ).subscribe((status) => this.isInvalid.emit(status))
     );
 
     this.subs.push(this.formGroup.valueChanges.pipe(
@@ -150,7 +122,7 @@ export class ProfilePageSecurityFormComponent implements OnDestroy, OnInit {
     this.formModel.forEach(
       (fieldModel: DynamicInputModel) => {
         fieldModel.label = this.translate.instant(this.FORM_PREFIX + 'label.' + fieldModel.id);
-      },
+      }
     );
   }
 

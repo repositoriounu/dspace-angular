@@ -1,26 +1,18 @@
-import {
-  Component,
-  Inject,
-  OnInit,
-} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import {
-  APP_CONFIG,
-  AppConfig,
-} from '../../../../config/app-config.interface';
-import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { SearchResult } from '../../search/models/search-result.model';
 import { DSpaceObject } from '../../../core/shared/dspace-object.model';
-import { Metadata } from '../../../core/shared/metadata.utils';
 import { hasValue } from '../../empty.util';
 import { AbstractListableElementComponent } from '../../object-collection/shared/object-collection-element/abstract-listable-element.component';
-import { SearchResult } from '../../search/models/search-result.model';
 import { TruncatableService } from '../../truncatable/truncatable.service';
+import { Metadata } from '../../../core/shared/metadata.utils';
+import { DSONameService } from '../../../core/breadcrumbs/dso-name.service';
+import { APP_CONFIG, AppConfig } from '../../../../config/app-config.interface';
 
 @Component({
   selector: 'ds-search-result-list-element',
-  template: ``,
-  standalone: true,
+  template: ``
 })
 export class SearchResultListElementComponent<T extends SearchResult<K>, K extends DSpaceObject> extends AbstractListableElementComponent<T> implements OnInit {
   /**
@@ -52,14 +44,14 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
    * @returns {string[]} the matching string values or an empty array.
    */
   allMetadataValues(keyOrKeys: string | string[]): string[] {
-    const dsoMetadata: string[] = Metadata.allValues([this.dso.metadata], keyOrKeys);
-    const highlights: string[] = Metadata.allValues([this.object.hitHighlights], keyOrKeys);
-    const removedHighlights: string[] = highlights.map(str => str.replace(/<\/?em>/g, ''));
+    let dsoMetadata: string[] = Metadata.allValues([this.dso.metadata], keyOrKeys);
+    let highlights: string[] = Metadata.allValues([this.object.hitHighlights], keyOrKeys);
+    let removedHighlights: string[] = highlights.map(str => str.replace(/<\/?em>/g, ''));
     for (let i = 0; i < removedHighlights.length; i++) {
-      const index = dsoMetadata.indexOf(removedHighlights[i]);
-      if (index !== -1) {
-        dsoMetadata[index] = highlights[i];
-      }
+        let index = dsoMetadata.indexOf(removedHighlights[i]);
+        if (index !== -1) {
+          dsoMetadata[index] = highlights[i];
+        }
     }
     return dsoMetadata;
   }

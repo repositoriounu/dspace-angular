@@ -1,8 +1,4 @@
-import {
-  Observable,
-  of as observableOf,
-} from 'rxjs';
-
+import { Observable, of as observableOf } from 'rxjs';
 import { CacheableObject } from '../../core/cache/cacheable-object.model';
 import { RemoteData } from '../../core/data/remote-data';
 import { createSuccessfulRemoteDataObject$ } from '../remote-data.utils';

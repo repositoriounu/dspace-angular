@@ -1,8 +1,4 @@
-import {
-  Component,
-  Input,
-} from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 import { ThemedComponent } from '../theme-support/themed.component';
 import { LogInComponent } from './log-in.component';
 
@@ -10,11 +6,9 @@ import { LogInComponent } from './log-in.component';
  * Themed wrapper for {@link LogInComponent}
  */
 @Component({
-  selector: 'ds-log-in',
+  selector: 'ds-themed-log-in',
   styleUrls: [],
-  templateUrl: './../theme-support/themed.component.html',
-  standalone: true,
-  imports: [LogInComponent],
+  templateUrl: './../theme-support/themed.component.html'
 })
 export class ThemedLogInComponent extends ThemedComponent<LogInComponent> {
 

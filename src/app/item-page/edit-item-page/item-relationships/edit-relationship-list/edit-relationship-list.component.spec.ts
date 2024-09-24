@@ -1,61 +1,41 @@
-import {
-  DebugElement,
-  NO_ERRORS_SCHEMA,
-} from '@angular/core';
-import {
-  ComponentFixture,
-  TestBed,
-  waitForAsync,
-} from '@angular/core/testing';
+import { DebugElement, NO_ERRORS_SCHEMA } from '@angular/core';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import {
-  ActivatedRoute,
-  RouterModule,
-} from '@angular/router';
-import { provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { cold } from 'jasmine-marbles';
-import {
-  BehaviorSubject,
-  of as observableOf,
-} from 'rxjs';
-
-import { APP_CONFIG } from '../../../../../config/app-config.interface';
-import { environment } from '../../../../../environments/environment.test';
-import { REQUEST } from '../../../../../express.tokens';
-import { AuthRequestService } from '../../../../core/auth/auth-request.service';
+import { BehaviorSubject, of as observableOf } from 'rxjs';
 import { LinkService } from '../../../../core/cache/builders/link.service';
-import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
-import { FieldChangeType } from '../../../../core/data/object-updates/field-change-type.model';
 import { ObjectUpdatesService } from '../../../../core/data/object-updates/object-updates.service';
 import { RelationshipDataService } from '../../../../core/data/relationship-data.service';
-import { RelationshipTypeDataService } from '../../../../core/data/relationship-type-data.service';
-import { GroupDataService } from '../../../../core/eperson/group-data.service';
-import { PaginationService } from '../../../../core/pagination/pagination.service';
-import { CookieService } from '../../../../core/services/cookie.service';
-import { HardRedirectService } from '../../../../core/services/hard-redirect.service';
-import { LinkHeadService } from '../../../../core/services/link-head.service';
-import { ConfigurationProperty } from '../../../../core/shared/configuration-property.model';
-import { Item } from '../../../../core/shared/item.model';
 import { ItemType } from '../../../../core/shared/item-relationships/item-type.model';
-import { Relationship } from '../../../../core/shared/item-relationships/relationship.model';
 import { RelationshipType } from '../../../../core/shared/item-relationships/relationship-type.model';
-import { SearchConfigurationService } from '../../../../core/shared/search/search-configuration.service';
-import { XSRFService } from '../../../../core/xsrf/xsrf.service';
-import { HostWindowService } from '../../../../shared/host-window.service';
+import { Relationship } from '../../../../core/shared/item-relationships/relationship.model';
+import { Item } from '../../../../core/shared/item.model';
 import { SelectableListService } from '../../../../shared/object-list/selectable-list/selectable-list.service';
+import { SharedModule } from '../../../../shared/shared.module';
+import { EditRelationshipListComponent } from './edit-relationship-list.component';
+import { createSuccessfulRemoteDataObject$ } from '../../../../shared/remote-data.utils';
+import { createPaginatedList } from '../../../../shared/testing/utils.test';
+import { PaginationService } from '../../../../core/pagination/pagination.service';
+import { PaginationServiceStub } from '../../../../shared/testing/pagination-service.stub';
+import { HostWindowService } from '../../../../shared/host-window.service';
+import { HostWindowServiceStub } from '../../../../shared/testing/host-window-service.stub';
 import { PaginationComponent } from '../../../../shared/pagination/pagination.component';
 import { PaginationComponentOptions } from '../../../../shared/pagination/pagination-component-options.model';
-import { createSuccessfulRemoteDataObject$ } from '../../../../shared/remote-data.utils';
-import { ActivatedRouteStub } from '../../../../shared/testing/active-router.stub';
-import { AuthRequestServiceStub } from '../../../../shared/testing/auth-request-service.stub';
-import { EditItemRelationshipsServiceStub } from '../../../../shared/testing/edit-item-relationships.service.stub';
-import { HostWindowServiceStub } from '../../../../shared/testing/host-window-service.stub';
-import { PaginationServiceStub } from '../../../../shared/testing/pagination-service.stub';
+import { RelationshipTypeDataService } from '../../../../core/data/relationship-type-data.service';
+import { FieldChangeType } from '../../../../core/data/object-updates/field-change-type.model';
+import { GroupDataService } from '../../../../core/eperson/group-data.service';
+import { ConfigurationDataService } from '../../../../core/data/configuration-data.service';
+import { LinkHeadService } from '../../../../core/services/link-head.service';
+import { SearchConfigurationService } from '../../../../core/shared/search/search-configuration.service';
 import { SearchConfigurationServiceStub } from '../../../../shared/testing/search-configuration-service.stub';
-import { createPaginatedList } from '../../../../shared/testing/utils.test';
+import { XSRFService } from '../../../../core/xsrf/xsrf.service';
+import { ConfigurationProperty } from '../../../../core/shared/configuration-property.model';
+import { Router } from '@angular/router';
+import { RouterMock } from '../../../../shared/mocks/router.mock';
+import { APP_CONFIG } from '../../../../../config/app-config.interface';
+import { EditItemRelationshipsServiceStub } from '../../../../shared/testing/edit-item-relationships.service.stub';
 import { EditItemRelationshipsService } from '../edit-item-relationships.service';
-import { EditRelationshipListComponent } from './edit-relationship-list.component';
+import { cold } from 'jasmine-marbles';
 
 describe('EditRelationshipListComponent', () => {
 
@@ -69,7 +49,6 @@ describe('EditRelationshipListComponent', () => {
   let selectableListService;
   let paginationService: PaginationServiceStub;
   let hostWindowService: HostWindowServiceStub;
-  let hardRedirectService;
   const relationshipTypeService = {};
   let editItemRelationshipsService: EditItemRelationshipsServiceStub;
 
@@ -98,16 +77,6 @@ describe('EditRelationshipListComponent', () => {
     comp.hasChanges = observableOf(false);
     comp.currentItemIsLeftItem$ = currentItemIsLeftItem$;
     fixture.detectChanges();
-  };
-
-  const initialState: any = {
-    core: {
-      'cache/object': {},
-      'cache/syncbuffer': {},
-      'cache/object-updates': {},
-      'data/request': {},
-      'index': {},
-    },
   };
 
   function init(leftType: string, rightType: string): void {
@@ -163,16 +132,16 @@ describe('EditRelationshipListComponent', () => {
         relationshipType: createSuccessfulRemoteDataObject$(relationshipType),
         leftItem: createSuccessfulRemoteDataObject$(itemLeft),
         rightItem: createSuccessfulRemoteDataObject$(itemRight2),
-      }),
+      })
     ];
 
     itemLeft = Object.assign(new Item(), {
       _links: {
-        self: { href: 'fake-item-url/publication' },
+        self: { href: 'fake-item-url/publication' }
       },
       id: `1-${leftType}`,
       uuid: `1-${leftType}`,
-      relationships: createSuccessfulRemoteDataObject$(createPaginatedList(relationships)),
+      relationships: createSuccessfulRemoteDataObject$(createPaginatedList(relationships))
     });
 
     fieldUpdate1 = {
@@ -181,7 +150,7 @@ describe('EditRelationshipListComponent', () => {
         relationship: relationships[0],
         type: relationshipType,
       },
-      changeType: undefined,
+      changeType: undefined
     };
     fieldUpdate2 = {
       field: {
@@ -189,19 +158,19 @@ describe('EditRelationshipListComponent', () => {
         relationship: relationships[1],
         type: relationshipType,
       },
-      changeType: FieldChangeType.REMOVE,
+      changeType: FieldChangeType.REMOVE
     };
 
     objectUpdatesService = jasmine.createSpyObj('objectUpdatesService',
       {
         getFieldUpdates: observableOf({
           [relationships[0].uuid]: fieldUpdate1,
-          [relationships[1].uuid]: fieldUpdate2,
+          [relationships[1].uuid]: fieldUpdate2
         }),
         // eslint-disable-next-line @typescript-eslint/no-empty-function
         initialize: () => {
         },
-      },
+      }
     );
 
     relationshipService = jasmine.createSpyObj('relationshipService',
@@ -209,7 +178,7 @@ describe('EditRelationshipListComponent', () => {
         getRelatedItemsByLabel: createSuccessfulRemoteDataObject$(createPaginatedList([itemRight1, itemRight2])),
         getItemRelationshipsByLabel: createSuccessfulRemoteDataObject$(createPaginatedList(relationships)),
         isLeftItem: observableOf(true),
-      },
+      }
     );
 
     selectableListService = {};
@@ -224,7 +193,7 @@ describe('EditRelationshipListComponent', () => {
     hostWindowService = new HostWindowServiceStub(1200);
 
     const linkHeadService = jasmine.createSpyObj('linkHeadService', {
-      addTag: '',
+      addTag: ''
     });
 
     const groupDataService = jasmine.createSpyObj('groupsDataService', {
@@ -237,21 +206,23 @@ describe('EditRelationshipListComponent', () => {
       findByPropertyName: createSuccessfulRemoteDataObject$(Object.assign(new ConfigurationProperty(), {
         name: 'test',
         values: [
-          'org.dspace.ctask.general.ProfileFormats = test',
-        ],
-      })),
+          'org.dspace.ctask.general.ProfileFormats = test'
+        ]
+      }))
     });
 
     editItemRelationshipsService = new EditItemRelationshipsServiceStub();
 
+    const environmentUseThumbs = {
+      browseBy: {
+        showThumbnails: true
+      }
+    };
+
     TestBed.configureTestingModule({
-      imports: [
-        EditRelationshipListComponent,
-        RouterModule.forRoot([]),
-        TranslateModule.forRoot(),
-      ],
+      imports: [SharedModule, TranslateModule.forRoot()],
+      declarations: [EditRelationshipListComponent],
       providers: [
-        provideMockStore({ initialState }),
         { provide: ObjectUpdatesService, useValue: objectUpdatesService },
         { provide: RelationshipDataService, useValue: relationshipService },
         { provide: SelectableListService, useValue: selectableListService },
@@ -260,20 +231,16 @@ describe('EditRelationshipListComponent', () => {
         { provide: HostWindowService, useValue: hostWindowService },
         { provide: RelationshipTypeDataService, useValue: relationshipTypeService },
         { provide: GroupDataService, useValue: groupDataService },
+        { provide: Router, useValue: new RouterMock() },
         { provide: LinkHeadService, useValue: linkHeadService },
         { provide: ConfigurationDataService, useValue: configurationDataService },
         { provide: SearchConfigurationService, useValue: new SearchConfigurationServiceStub() },
         { provide: EditItemRelationshipsService, useValue: editItemRelationshipsService },
-        { provide: ActivatedRoute, useValue: new ActivatedRouteStub() },
-        { provide: AuthRequestService, useValue: new AuthRequestServiceStub() },
-        { provide: HardRedirectService, useValue: hardRedirectService },
         { provide: XSRFService, useValue: {} },
-        { provide: APP_CONFIG, useValue: environment },
-        { provide: REQUEST, useValue: {} },
-        CookieService,
+        { provide: APP_CONFIG, useValue: environmentUseThumbs }
       ], schemas: [
-        NO_ERRORS_SCHEMA,
-      ],
+        NO_ERRORS_SCHEMA
+      ]
     }).compileComponents();
 
     resetComponent();
@@ -375,7 +342,7 @@ describe('EditRelationshipListComponent', () => {
 
 
 
-      describe('changes management for add buttons', () => {
+      describe('changes managment for add buttons', () => {
 
         it('should show enabled add buttons', () => {
           const element = de.query(By.css('.btn-success'));

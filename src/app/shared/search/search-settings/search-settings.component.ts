@@ -1,31 +1,13 @@
-import {
-  NgFor,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  Inject,
-  Input,
-} from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
-
-import {
-  SortDirection,
-  SortOptions,
-} from '../../../core/cache/models/sort-options.model';
-import { PaginationService } from '../../../core/pagination/pagination.service';
+import { Component, Inject, Input } from '@angular/core';
+import { SortDirection, SortOptions } from '../../../core/cache/models/sort-options.model';
 import { SearchConfigurationService } from '../../../core/shared/search/search-configuration.service';
-import { SEARCH_CONFIG_SERVICE } from '../../../my-dspace-page/my-dspace-configuration.service';
-import { PageSizeSelectorComponent } from '../../page-size-selector/page-size-selector.component';
-import { SidebarDropdownComponent } from '../../sidebar/sidebar-dropdown.component';
+import { SEARCH_CONFIG_SERVICE } from '../../../my-dspace-page/my-dspace-page.component';
+import { PaginationService } from '../../../core/pagination/pagination.service';
 
 @Component({
-  selector: 'ds-base-search-settings',
+  selector: 'ds-search-settings',
   styleUrls: ['./search-settings.component.scss'],
-  templateUrl: './search-settings.component.html',
-  standalone: true,
-  imports: [NgIf, SidebarDropdownComponent, NgFor, FormsModule, PageSizeSelectorComponent, TranslateModule],
+  templateUrl: './search-settings.component.html'
 })
 
 /**
@@ -57,7 +39,7 @@ export class SearchSettingsComponent {
     this.paginationService.updateRoute(this.searchConfigurationService.paginationID, {
       sortField: values[0],
       sortDirection: values[1] as SortDirection,
-      page: 1,
+      page: 1
     });
   }
 }

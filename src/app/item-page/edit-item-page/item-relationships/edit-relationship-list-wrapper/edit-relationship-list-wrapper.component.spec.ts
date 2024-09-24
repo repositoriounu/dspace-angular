@@ -1,28 +1,22 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import {
-  ComponentFixture,
-  TestBed,
-  waitForAsync,
-} from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { cold } from 'jasmine-marbles';
+import { ChangeDetectorRef, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { of as observableOf } from 'rxjs';
-
-import { Item } from '../../../../core/shared/item.model';
-import { ItemType } from '../../../../core/shared/item-relationships/item-type.model';
+import { EditRelationshipListWrapperComponent } from './edit-relationship-list-wrapper.component';
+import { EditItemRelationshipsService } from '../edit-item-relationships.service';
+import { By } from '@angular/platform-browser';
 import { RelationshipType } from '../../../../core/shared/item-relationships/relationship-type.model';
 import { createSuccessfulRemoteDataObject$ } from '../../../../shared/remote-data.utils';
-import { EditItemRelationshipsService } from '../edit-item-relationships.service';
-import { EditRelationshipListComponent } from '../edit-relationship-list/edit-relationship-list.component';
-import { EditRelationshipListWrapperComponent } from './edit-relationship-list-wrapper.component';
+import { ItemType } from '../../../../core/shared/item-relationships/item-type.model';
+import { Item } from '../../../../core/shared/item.model';
+import { cold } from 'jasmine-marbles';
 
 describe('EditRelationshipListWrapperComponent', () => {
   let editItemRelationshipsService: EditItemRelationshipsService;
   let comp: EditRelationshipListWrapperComponent;
   let fixture: ComponentFixture<EditRelationshipListWrapperComponent>;
 
-  const leftType = Object.assign(new ItemType(), { id: 'leftType', label: 'leftTypeString' });
-  const rightType = Object.assign(new ItemType(), { id: 'rightType', label: 'rightTypeString' });
+  const leftType = Object.assign(new ItemType(), {id: 'leftType', label: 'leftTypeString'});
+  const rightType = Object.assign(new ItemType(), {id: 'rightType', label: 'rightTypeString'});
 
   const relationshipType = Object.assign(new RelationshipType(), {
     id: '1',
@@ -37,7 +31,7 @@ describe('EditRelationshipListWrapperComponent', () => {
     uuid: 'relationshiptype-1',
   });
 
-  const item = Object.assign(new Item(), { uuid: 'item-uuid' });
+  const item = Object.assign(new Item(), {uuid: 'item-uuid'});
 
   beforeEach(waitForAsync(() => {
 
@@ -48,21 +42,14 @@ describe('EditRelationshipListWrapperComponent', () => {
 
 
     TestBed.configureTestingModule({
-      imports: [
-        EditRelationshipListWrapperComponent,
-      ],
+      // imports: [NoopAnimationsModule, SharedModule, TranslateModule.forRoot()],
+      declarations: [EditRelationshipListWrapperComponent],
       providers: [
-        { provide: EditItemRelationshipsService, useValue: editItemRelationshipsService },
-      ],
-      schemas: [
-        CUSTOM_ELEMENTS_SCHEMA,
-      ],
-    }).overrideComponent(EditRelationshipListWrapperComponent, {
-      remove: {
-        imports: [
-          EditRelationshipListComponent,
-        ],
-      },
+        {provide: EditItemRelationshipsService, useValue: editItemRelationshipsService},
+        ChangeDetectorRef
+      ], schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+      ]
     }).compileComponents();
 
   }));

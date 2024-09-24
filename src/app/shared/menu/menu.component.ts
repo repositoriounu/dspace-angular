@@ -1,45 +1,24 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Injector,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {
-  BehaviorSubject,
-  Observable,
-  of as observableOf,
-  Subscription,
-} from 'rxjs';
-import {
-  distinctUntilChanged,
-  map,
-  mergeMap,
-  switchMap,
-} from 'rxjs/operators';
-
-import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
-import { FeatureID } from '../../core/data/feature-authorization/feature-id';
-import { GenericConstructor } from '../../core/shared/generic-constructor';
-import {
-  hasValue,
-  isNotEmptyOperator,
-} from '../empty.util';
-import { ThemeService } from '../theme-support/theme.service';
+import { ChangeDetectionStrategy, Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable, of as observableOf, Subscription } from 'rxjs';
 import { MenuService } from './menu.service';
-import { MenuID } from './menu-id.model';
+import { distinctUntilChanged, map, mergeMap, switchMap } from 'rxjs/operators';
+import { GenericConstructor } from '../../core/shared/generic-constructor';
+import { hasValue, isNotEmptyOperator } from '../empty.util';
+import { MenuSectionComponent } from './menu-section/menu-section.component';
 import { getComponentForMenu } from './menu-section.decorator';
 import { MenuSection } from './menu-section.model';
-import { MenuSectionComponent } from './menu-section/menu-section.component';
+import { MenuID } from './menu-id.model';
+import { ActivatedRoute } from '@angular/router';
+import { AuthorizationDataService } from '../../core/data/feature-authorization/authorization-data.service';
+import { FeatureID } from '../../core/data/feature-authorization/feature-id';
+import { ThemeService } from '../theme-support/theme.service';
 
 /**
  * A basic implementation of a MenuComponent
  */
 @Component({
   selector: 'ds-menu',
-  template: '',
-  standalone: true,
+  template: ''
 })
 export class MenuComponent implements OnInit, OnDestroy {
   /**
@@ -94,7 +73,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   private activatedRouteLastChild: ActivatedRoute;
 
   constructor(protected menuService: MenuService, protected injector: Injector, public authorizationService: AuthorizationDataService,
-              public route: ActivatedRoute, protected themeService: ThemeService,
+              public route: ActivatedRoute, protected themeService: ThemeService
   ) {
   }
 
@@ -121,17 +100,17 @@ export class MenuComponent implements OnInit, OnDestroy {
         }),
         isNotEmptyOperator(),
         switchMap((section: MenuSection) => this.getSectionComponent(section).pipe(
-          map((component: GenericConstructor<MenuSectionComponent>) => ({ section, component })),
+          map((component: GenericConstructor<MenuSectionComponent>) => ({ section, component }))
         )),
         distinctUntilChanged((x, y) => x.section.id === y.section.id && x.component.prototype === y.component.prototype),
       ).subscribe(({ section, component }) => {
         const nextMap = this.sectionMap$.getValue();
         nextMap.set(section.id, {
           injector: this.getSectionDataInjector(section),
-          component,
+          component
         });
         this.sectionMap$.next(nextMap);
-      }),
+      })
     );
   }
 
@@ -160,7 +139,7 @@ export class MenuComponent implements OnInit, OnDestroy {
               return section;
             }
           }));
-      }),
+      })
     );
   }
 
@@ -239,7 +218,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     return this.menuService.hasSubSections(this.menuID, section.id).pipe(
       map((expandable: boolean) => {
         return getComponentForMenu(this.menuID, expandable, this.themeService.getThemeName());
-      },
+      }
       ),
     );
   }
@@ -252,7 +231,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   private getSectionDataInjector(section: MenuSection) {
     return Injector.create({
       providers: [{ provide: 'sectionDataProvider', useFactory: () => (section), deps: [] }],
-      parent: this.injector,
+      parent: this.injector
     });
   }
 

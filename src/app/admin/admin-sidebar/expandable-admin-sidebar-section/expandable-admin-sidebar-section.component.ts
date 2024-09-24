@@ -1,31 +1,15 @@
-import {
-  AsyncPipe,
-  NgClass,
-  NgComponentOutlet,
-  NgFor,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  Inject,
-  Injector,
-  OnInit,
-} from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import {
-  combineLatest as combineLatestObservable,
-  Observable,
-} from 'rxjs';
-import { map } from 'rxjs/operators';
-
-import { bgColor } from '../../../shared/animations/bgColor';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { rotate } from '../../../shared/animations/rotate';
-import { slide } from '../../../shared/animations/slide';
-import { MenuService } from '../../../shared/menu/menu.service';
-import { MenuID } from '../../../shared/menu/menu-id.model';
-import { CSSVariableService } from '../../../shared/sass-helper/css-variable.service';
 import { AdminSidebarSectionComponent } from '../admin-sidebar-section/admin-sidebar-section.component';
+import { slide } from '../../../shared/animations/slide';
+import { CSSVariableService } from '../../../shared/sass-helper/css-variable.service';
+import { bgColor } from '../../../shared/animations/bgColor';
+import { MenuService } from '../../../shared/menu/menu.service';
+import { combineLatest as combineLatestObservable, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { rendersSectionForMenu } from '../../../shared/menu/menu-section.decorator';
+import { MenuID } from '../../../shared/menu/menu-id.model';
+import { Router } from '@angular/router';
 
 /**
  * Represents a expandable section in the sidebar
@@ -34,11 +18,10 @@ import { AdminSidebarSectionComponent } from '../admin-sidebar-section/admin-sid
   selector: 'ds-expandable-admin-sidebar-section',
   templateUrl: './expandable-admin-sidebar-section.component.html',
   styleUrls: ['./expandable-admin-sidebar-section.component.scss'],
-  animations: [rotate, slide, bgColor],
-  standalone: true,
-  imports: [NgClass, NgComponentOutlet, NgIf, NgFor, AsyncPipe, TranslateModule],
+  animations: [rotate, slide, bgColor]
 })
 
+@rendersSectionForMenu(MenuID.ADMIN, true)
 export class ExpandableAdminSidebarSectionComponent extends AdminSidebarSectionComponent implements OnInit {
   /**
    * This section resides in the Admin Sidebar
@@ -85,7 +68,7 @@ export class ExpandableAdminSidebarSectionComponent extends AdminSidebarSectionC
     this.isSidebarCollapsed$ = this.menuService.isMenuCollapsed(this.menuID);
     this.isSidebarPreviewCollapsed$ = this.menuService.isMenuPreviewCollapsed(this.menuID);
     this.isExpanded$ = combineLatestObservable([this.active, this.isSidebarCollapsed$, this.isSidebarPreviewCollapsed$]).pipe(
-      map(([active, sidebarCollapsed, sidebarPreviewCollapsed]) => (active && (!sidebarCollapsed || !sidebarPreviewCollapsed))),
+      map(([active, sidebarCollapsed, sidebarPreviewCollapsed]) => (active && (!sidebarCollapsed || !sidebarPreviewCollapsed)))
     );
   }
 

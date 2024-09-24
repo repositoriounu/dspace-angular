@@ -1,39 +1,20 @@
 import { Injectable } from '@angular/core';
-import {
-  createSelector,
-  MemoizedSelector,
-  select,
-  Store,
-} from '@ngrx/store';
-import { Observable } from 'rxjs';
-
-import {
-  AppState,
-  keySelector,
-} from '../../app.reducer';
-import {
-  buildPaginatedList,
-  PaginatedList,
-} from '../../core/data/paginated-list.model';
-import { PageInfo } from '../../core/shared/page-info.model';
-import {
-  hasValue,
-  isNotEmpty,
-} from '../empty.util';
-import { KeyValuePair } from '../key-value-pair.model';
+import { AppState, keySelector } from '../../app.reducer';
+import { createSelector, MemoizedSelector, select, Store } from '@ngrx/store';
+import { AddAllCSSVariablesAction, AddCSSVariableAction, ClearCSSVariablesAction } from './css-variable.actions';
 import { PaginationComponentOptions } from '../pagination/pagination-component-options.model';
-import {
-  AddAllCSSVariablesAction,
-  AddCSSVariableAction,
-  ClearCSSVariablesAction,
-} from './css-variable.actions';
+import { buildPaginatedList, PaginatedList } from '../../core/data/paginated-list.model';
+import { Observable } from 'rxjs';
+import { hasValue, isNotEmpty } from '../empty.util';
+import { KeyValuePair } from '../key-value-pair.model';
+import { PageInfo } from '../../core/shared/page-info.model';
 import { CSSVariablesState } from './css-variable.reducer';
 
 /**
  * This service deals with adding and retrieving CSS variables to and from the store
  */
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class CSSVariableService {
   isSameDomain = (styleSheet) => {
@@ -51,11 +32,11 @@ export class CSSVariableService {
    */
   hasCssRules = (styleSheet) => {
     // Injected (cross-origin) styles might have no css rules value and throw some exception
-    try {
-      return styleSheet.cssRules;
-    } catch (e) {
-      return false;
-    }
+      try {
+        return styleSheet.cssRules;
+      } catch (e) {
+        return false;
+      }
   };
 
   /*
@@ -136,19 +117,19 @@ export class CSSVariableService {
               [...sheet.cssRules].filter(this.isStyleRule).reduce((propValArr, rule: any) => {
                 const props = [...rule.style]
                   .map((propName) => {
-                    return {
-                      key: propName.trim(),
-                      value: rule.style.getPropertyValue(propName).trim(),
-                    } as KeyValuePair<string, string>;
-                  },
+                      return {
+                        key: propName.trim(),
+                        value: rule.style.getPropertyValue(propName).trim()
+                      } as KeyValuePair<string, string>;
+                    }
                   )
                   // Discard any props that don't start with "--". Custom props are required to.
                   .filter(({ key }: KeyValuePair<string, string>) => key.indexOf('--') === 0);
 
                 return [...propValArr, ...props];
-              }, []),
+              }, [])
             ),
-          [],
+          []
         );
     } else {
       return [];

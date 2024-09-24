@@ -6,29 +6,22 @@
  * http://www.dspace.org/license/
  */
 /* eslint-disable max-classes-per-file */
-import {
-  Inject,
-  Injectable,
-} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-
-import {
-  APP_CONFIG,
-  AppConfig,
-} from '../../../config/app-config.interface';
-import { getDSORoute } from '../../app-routing-paths';
 import { hasValue } from '../../shared/empty.util';
 import { RemoteDataBuildService } from '../cache/builders/remote-data-build.service';
 import { ObjectCacheService } from '../cache/object-cache.service';
-import { HardRedirectService } from '../services/hard-redirect.service';
-import { DSpaceObject } from '../shared/dspace-object.model';
 import { HALEndpointService } from '../shared/hal-endpoint.service';
-import { getFirstCompletedRemoteData } from '../shared/operators';
-import { IdentifiableDataService } from './base/identifiable-data.service';
 import { RemoteData } from './remote-data';
 import { IdentifierType } from './request.models';
 import { RequestService } from './request.service';
+import { getFirstCompletedRemoteData } from '../shared/operators';
+import { DSpaceObject } from '../shared/dspace-object.model';
+import { IdentifiableDataService } from './base/identifiable-data.service';
+import { getDSORoute } from '../../app-routing-paths';
+import { HardRedirectService } from '../services/hard-redirect.service';
+import { APP_CONFIG, AppConfig } from '../../../config/app-config.interface';
 
 const ID_ENDPOINT = 'pid';
 const UUID_ENDPOINT = 'dso';
@@ -50,7 +43,7 @@ class DsoByIdOrUUIDDataService extends IdentifiableDataService<DSpaceObject> {
       // interpolate id/uuid as query parameter
       (endpoint: string, resourceID: string): string => {
         return endpoint.replace(/{\?id}/, `?id=${resourceID}`)
-          .replace(/{\?uuid}/, `?uuid=${resourceID}`);
+                       .replace(/{\?uuid}/, `?uuid=${resourceID}`);
       },
     );
   }
@@ -73,7 +66,7 @@ class DsoByIdOrUUIDDataService extends IdentifiableDataService<DSpaceObject> {
  * A service to handle redirects from identifier paths to DSO path
  * e.g.: redirect from /handle/... to /items/...
  */
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class DsoRedirectService {
   private dataService: DsoByIdOrUUIDDataService;
 
@@ -83,7 +76,7 @@ export class DsoRedirectService {
     protected rdbService: RemoteDataBuildService,
     protected objectCache: ObjectCacheService,
     protected halService: HALEndpointService,
-    private hardRedirectService: HardRedirectService,
+    private hardRedirectService: HardRedirectService
   ) {
     this.dataService = new DsoByIdOrUUIDDataService(requestService, rdbService, objectCache, halService);
   }
@@ -91,7 +84,7 @@ export class DsoRedirectService {
   /**
    * Redirect to a DSpaceObject's path using the given identifier type and ID.
    * This is used to redirect paths like "/handle/[prefix]/[suffix]" to the object's path (e.g. /items/[uuid]).
-   * See lookupGuard for more examples.
+   * See LookupGuard for more examples.
    *
    * @param id              the identifier of the object to retrieve
    * @param identifierType  the type of the given identifier (defaults to UUID)
@@ -104,14 +97,14 @@ export class DsoRedirectService {
         if (response.hasSucceeded) {
           const dso = response.payload;
           if (hasValue(dso.uuid)) {
-            const newRoute = getDSORoute(dso);
+            let newRoute = getDSORoute(dso);
             if (hasValue(newRoute)) {
               // Use a "301 Moved Permanently" redirect for SEO purposes
               this.hardRedirectService.redirect(this.appConfig.ui.nameSpace.replace(/\/$/, '') + newRoute, 301);
             }
           }
         }
-      }),
+      })
     );
   }
 }

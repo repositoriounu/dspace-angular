@@ -1,18 +1,9 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
-import {
-  Inject,
-  Injectable,
-} from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { REQUEST } from '@nguniversal/express-engine/tokens';
 
-import { REQUEST } from '../../../express.tokens';
-
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 /**
  * Http Interceptor intercepting Http Requests, adding the client's IP to their X-Forwarded-For header
  */

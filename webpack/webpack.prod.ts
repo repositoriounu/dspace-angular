@@ -1,17 +1,16 @@
-import { EnvironmentPlugin } from 'webpack';
-
-import { projectRoot } from './helpers';
 import { commonExports } from './webpack.common';
+import { projectRoot } from './helpers';
+
+const webpack = require('webpack');
 
 module.exports = Object.assign({}, commonExports, {
   plugins: [
     ...commonExports.plugins,
-    // @ts-expect-error: EnvironmentPlugin constructor types are currently to strict see issue https://github.com/webpack/webpack/issues/18719
-    new EnvironmentPlugin({
+    new webpack.EnvironmentPlugin({
       'process.env': {
-        NODE_ENV: 'production',
-        AOT: true,
-      },
+        NODE_ENV: JSON.stringify('production'),
+        AOT: true
+      }
     }),
   ],
   mode: 'production',

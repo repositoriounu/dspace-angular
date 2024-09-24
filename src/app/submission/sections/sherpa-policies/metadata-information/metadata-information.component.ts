@@ -1,28 +1,14 @@
-import {
-  DatePipe,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  Input,
-} from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { Component, Input } from '@angular/core';
 
 import { Metadata } from '../../../../core/submission/models/sherpa-policies-details.model';
 
 /**
- * This component represents a section that contains the metadata information.
+ * This component represents a section that contains the matadata informations.
  */
 @Component({
   selector: 'ds-metadata-information',
   templateUrl: './metadata-information.component.html',
-  styleUrls: ['./metadata-information.component.scss'],
-  imports: [
-    NgIf,
-    TranslateModule,
-    DatePipe,
-  ],
-  standalone: true,
+  styleUrls: ['./metadata-information.component.scss']
 })
 export class MetadataInformationComponent {
   /**

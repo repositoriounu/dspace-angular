@@ -1,18 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { TransferState } from '@angular/core';
 import { TranslateLoader } from '@ngx-translate/core';
-import {
-  Observable,
-  of as observableOf,
-} from 'rxjs';
-import { map } from 'rxjs/operators';
-
+import { HttpClient } from '@angular/common/http';
+import { TransferState } from '@angular/platform-browser';
+import { NGX_TRANSLATE_STATE, NgxTranslateState } from './ngx-translate-state';
 import { hasValue } from '../app/shared/empty.util';
+import { map } from 'rxjs/operators';
+import { of as observableOf, Observable } from 'rxjs';
 import { environment } from '../environments/environment';
-import {
-  NGX_TRANSLATE_STATE,
-  NgxTranslateState,
-} from './ngx-translate-state';
 
 /**
  * A TranslateLoader for ngx-translate to retrieve i18n messages from the TransferState, or download
@@ -23,7 +16,7 @@ export class TranslateBrowserLoader implements TranslateLoader {
     protected transferState: TransferState,
     protected http: HttpClient,
     protected prefix?: string,
-    protected suffix?: string,
+    protected suffix?: string
   ) {
   }
 
@@ -45,7 +38,7 @@ export class TranslateBrowserLoader implements TranslateLoader {
       // If they're not available on the transfer state (e.g. when running in dev mode), retrieve
       // them using HttpClient
       return this.http.get(`${this.prefix}${lang}${translationHash}${this.suffix}`, { responseType: 'text' }).pipe(
-        map((json: any) => JSON.parse(json)),
+        map((json: any) => JSON.parse(json))
       );
     }
   }

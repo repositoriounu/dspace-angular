@@ -1,29 +1,10 @@
-import {
-  NgFor,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Optional,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
-import {
-  ControlContainer,
-  NgForm,
-} from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
-
-import { hasValue } from '../../../shared/empty.util';
-import { ProcessParameter } from '../../processes/process-parameter.model';
+import { Component, EventEmitter, Input, OnChanges, Optional, Output, SimpleChanges } from '@angular/core';
 import { Script } from '../../scripts/script.model';
+import { ProcessParameter } from '../../processes/process-parameter.model';
+import { hasValue } from '../../../shared/empty.util';
+import { ControlContainer, NgForm } from '@angular/forms';
 import { ScriptParameter } from '../../scripts/script-parameter.model';
-import { controlContainerFactory } from '../process-form-factory';
-import { ParameterSelectComponent } from './parameter-select/parameter-select.component';
+import { controlContainerFactory } from '../process-form.component';
 
 /**
  * Component that represents the selected list of parameters for a script
@@ -35,12 +16,10 @@ import { ParameterSelectComponent } from './parameter-select/parameter-select.co
   viewProviders: [{
     provide: ControlContainer,
     useFactory: controlContainerFactory,
-    deps: [[new Optional(), NgForm]],
-  }],
-  standalone: true,
-  imports: [NgIf, NgFor, ParameterSelectComponent, TranslateModule],
+    deps: [[new Optional(), NgForm]]
+  }]
 })
-export class ProcessParametersComponent implements OnChanges, OnInit {
+export class ProcessParametersComponent implements OnChanges {
   /**
    * The currently selected script
    */
@@ -60,7 +39,7 @@ export class ProcessParametersComponent implements OnChanges, OnInit {
    */
   parameterValues: ProcessParameter[];
 
-  ngOnInit(): void {
+  ngOnInit() {
     if (hasValue(this.initialParams)) {
       this.parameterValues = this.initialParams;
     }
@@ -120,7 +99,7 @@ export class ProcessParametersComponent implements OnChanges, OnInit {
       this.parameterValues = this.script.parameters
         .filter((param) => param.mandatory)
         .map(
-          (parameter: ScriptParameter) => Object.assign(new ProcessParameter(), { name: parameter.name }),
+          (parameter: ScriptParameter) => Object.assign(new ProcessParameter(), { name: parameter.name })
         );
     }
     this.addParameter();

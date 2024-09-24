@@ -1,56 +1,23 @@
-import {
-  AsyncPipe,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  Inject,
-  OnInit,
-} from '@angular/core';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import {
-  select,
-  Store,
-} from '@ngrx/store';
-import { TranslateModule } from '@ngx-translate/core';
-import {
-  combineLatest,
-  Observable,
-  shareReplay,
-} from 'rxjs';
-import {
-  filter,
-  map,
-} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Component, Inject, OnInit } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
-import {
-  getForgotPasswordRoute,
-  getRegisterRoute,
-} from '../../../../app-routing-paths';
-import {
-  AuthenticateAction,
-  ResetAuthenticationMessagesAction,
-} from '../../../../core/auth/auth.actions';
-import { AuthService } from '../../../../core/auth/auth.service';
-import { AuthMethod } from '../../../../core/auth/models/auth.method';
-import {
-  getAuthenticationError,
-  getAuthenticationInfo,
-} from '../../../../core/auth/selectors';
-import { CoreState } from '../../../../core/core-state.model';
-import { AuthorizationDataService } from '../../../../core/data/feature-authorization/authorization-data.service';
-import { FeatureID } from '../../../../core/data/feature-authorization/feature-id';
-import { HardRedirectService } from '../../../../core/services/hard-redirect.service';
-import { fadeOut } from '../../../animations/fade';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AuthenticateAction, ResetAuthenticationMessagesAction } from '../../../../core/auth/auth.actions';
+
+import { getAuthenticationError, getAuthenticationInfo, } from '../../../../core/auth/selectors';
 import { isNotEmpty } from '../../../empty.util';
-import { BrowserOnlyPipe } from '../../../utils/browser-only.pipe';
+import { fadeOut } from '../../../animations/fade';
+import { AuthMethodType } from '../../../../core/auth/models/auth.method-type';
+import { renderAuthMethodFor } from '../log-in.methods-decorator';
+import { AuthMethod } from '../../../../core/auth/models/auth.method';
+import { AuthService } from '../../../../core/auth/auth.service';
+import { HardRedirectService } from '../../../../core/services/hard-redirect.service';
+import { CoreState } from '../../../../core/core-state.model';
+import { getForgotPasswordRoute, getRegisterRoute } from '../../../../app-routing-paths';
+import { FeatureID } from '../../../../core/data/feature-authorization/feature-id';
+import { AuthorizationDataService } from '../../../../core/data/feature-authorization/authorization-data.service';
 
 /**
  * /users/sign-in
@@ -60,10 +27,9 @@ import { BrowserOnlyPipe } from '../../../utils/browser-only.pipe';
   selector: 'ds-log-in-password',
   templateUrl: './log-in-password.component.html',
   styleUrls: ['./log-in-password.component.scss'],
-  animations: [fadeOut],
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgIf, RouterLink, AsyncPipe, TranslateModule, BrowserOnlyPipe],
+  animations: [fadeOut]
 })
+@renderAuthMethodFor(AuthMethodType.Password)
 export class LogInPasswordComponent implements OnInit {
 
   /**
@@ -98,7 +64,7 @@ export class LogInPasswordComponent implements OnInit {
 
   /**
    * The authentication form.
-   * @type {UntypedFormGroup}
+   * @type {FormGroup}
    */
   public form: UntypedFormGroup;
 
@@ -106,17 +72,6 @@ export class LogInPasswordComponent implements OnInit {
    * Whether the current user (or anonymous) is authorized to register an account
    */
   public canRegister$: Observable<boolean>;
-
-  /**
-   * Whether or not the current user (or anonymous) is authorized to register an account
-   */
-  canForgot$: Observable<boolean>;
-
-  /**
-   * Shows the divider only if contains at least one link to show
-   */
-  canShowDivider$: Observable<boolean>;
-
 
   constructor(
     @Inject('authMethodProvider') public injectedAuthMethodModel: AuthMethod,
@@ -139,16 +94,16 @@ export class LogInPasswordComponent implements OnInit {
     // set formGroup
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
 
     // set error
     this.error = this.store.pipe(select(
       getAuthenticationError),
-    map((error) => {
-      this.hasError = (isNotEmpty(error));
-      return error;
-    }),
+      map((error) => {
+        this.hasError = (isNotEmpty(error));
+        return error;
+      })
     );
 
     // set error
@@ -157,21 +112,10 @@ export class LogInPasswordComponent implements OnInit {
       map((message) => {
         this.hasMessage = (isNotEmpty(message));
         return message;
-      }),
+      })
     );
 
-    this.canRegister$ = this.authorizationService.isAuthorized(FeatureID.EPersonRegistration).pipe(
-      shareReplay({ refCount: false, bufferSize: 1 }),
-    );
-    this.canForgot$ = this.authorizationService.isAuthorized(FeatureID.EPersonForgotPassword).pipe(
-      shareReplay({ refCount: false, bufferSize: 1 }),
-    );
-    this.canShowDivider$ =
-        combineLatest([this.canRegister$, this.canForgot$])
-          .pipe(
-            map(([canRegister, canForgot]) => canRegister || canForgot),
-            filter(Boolean),
-          );
+    this.canRegister$ = this.authorizationService.isAuthorized(FeatureID.EPersonRegistration);
   }
 
   getRegisterRoute() {

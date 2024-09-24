@@ -1,21 +1,11 @@
 import { Injectable } from '@angular/core';
-import {
-  Observable,
-  of as observableOf,
-} from 'rxjs';
-import {
-  map,
-  take,
-} from 'rxjs/operators';
-
+import { isEmpty, hasNoValue } from './empty.util';
 import { ConfigurationDataService } from '../core/data/configuration-data.service';
-import { RemoteData } from '../core/data/remote-data';
-import { ConfigurationProperty } from '../core/shared/configuration-property.model';
 import { getFirstCompletedRemoteData } from '../core/shared/operators';
-import {
-  hasNoValue,
-  isEmpty,
-} from './empty.util';
+import { map, take } from 'rxjs/operators';
+import { ConfigurationProperty } from '../core/shared/configuration-property.model';
+import { Observable, of as observableOf } from 'rxjs';
+import { RemoteData } from '../core/data/remote-data';
 
 export const CANONICAL_PREFIX_KEY = 'handle.canonical.prefix';
 
@@ -26,7 +16,7 @@ const PREFIX_REGEX = (prefix: string | undefined) => {
 const NO_PREFIX_REGEX = /^([^\/]+\/[^\/]+)$/;
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class HandleService {
 

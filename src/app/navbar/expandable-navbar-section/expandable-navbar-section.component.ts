@@ -1,37 +1,20 @@
-import {
-  AsyncPipe,
-  NgComponentOutlet,
-  NgFor,
-  NgIf,
-} from '@angular/common';
-import {
-  Component,
-  HostListener,
-  Inject,
-  Injector,
-  OnInit,
-} from '@angular/core';
-import { RouterLinkActive } from '@angular/router';
-import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
-
-import { slide } from '../../shared/animations/slide';
-import { HostWindowService } from '../../shared/host-window.service';
-import { MenuService } from '../../shared/menu/menu.service';
-import { MenuID } from '../../shared/menu/menu-id.model';
-import { VarDirective } from '../../shared/utils/var.directive';
+import { Component, HostListener, Inject, Injector, OnInit } from '@angular/core';
 import { NavbarSectionComponent } from '../navbar-section/navbar-section.component';
+import { MenuService } from '../../shared/menu/menu.service';
+import { slide } from '../../shared/animations/slide';
+import { first } from 'rxjs/operators';
+import { HostWindowService } from '../../shared/host-window.service';
+import { MenuID } from '../../shared/menu/menu-id.model';
+import { Observable } from 'rxjs';
 
 /**
  * Represents an expandable section in the navbar
  */
 @Component({
-  selector: 'ds-base-expandable-navbar-section',
+  selector: 'ds-expandable-navbar-section',
   templateUrl: './expandable-navbar-section.component.html',
   styleUrls: ['./expandable-navbar-section.component.scss'],
-  animations: [slide],
-  standalone: true,
-  imports: [VarDirective, RouterLinkActive, NgComponentOutlet, NgIf, NgFor, AsyncPipe],
+  animations: [slide]
 })
 export class ExpandableNavbarSectionComponent extends NavbarSectionComponent implements OnInit {
   /**
@@ -57,7 +40,7 @@ export class ExpandableNavbarSectionComponent extends NavbarSectionComponent imp
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.isMobile$.pipe(
-      first(),
+      first()
     ).subscribe((isMobile) => {
       // When switching between desktop and mobile active sections should be deactivated
       if (isMobile !== this.wasMobile) {
@@ -71,7 +54,7 @@ export class ExpandableNavbarSectionComponent extends NavbarSectionComponent imp
   constructor(@Inject('sectionDataProvider') menuSection,
               protected menuService: MenuService,
               protected injector: Injector,
-              private windowService: HostWindowService,
+              private windowService: HostWindowService
   ) {
     super(menuSection, menuService, injector);
     this.isMobile$ = this.windowService.isMobile();
@@ -88,7 +71,7 @@ export class ExpandableNavbarSectionComponent extends NavbarSectionComponent imp
    */
   onMouseEnter($event: Event, isActive: boolean) {
     this.isMobile$.pipe(
-      first(),
+      first()
     ).subscribe((isMobile) => {
       if (!isMobile && !isActive && !this.mouseEntered) {
         this.activateSection($event);
@@ -104,7 +87,7 @@ export class ExpandableNavbarSectionComponent extends NavbarSectionComponent imp
    */
   onMouseLeave($event: Event, isActive: boolean) {
     this.isMobile$.pipe(
-      first(),
+      first()
     ).subscribe((isMobile) => {
       if (!isMobile && isActive && this.mouseEntered) {
         this.deactivateSection($event);

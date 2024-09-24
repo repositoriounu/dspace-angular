@@ -1,29 +1,19 @@
-import {
-  ComponentFixture,
-  TestBed,
-  waitForAsync,
-} from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import {
-  utcToZonedTime,
-  zonedTimeToUtc,
-} from 'date-fns-tz';
-import { UiSwitchModule } from 'ngx-ui-switch';
-
-import { RequestService } from '../../core/data/request.service';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { SystemWideAlertDataService } from '../../core/data/system-wide-alert-data.service';
-import { NotificationsService } from '../../shared/notifications/notifications.service';
-import {
-  createFailedRemoteDataObject$,
-  createSuccessfulRemoteDataObject$,
-} from '../../shared/remote-data.utils';
+import { SystemWideAlert } from '../system-wide-alert.model';
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
+import { createFailedRemoteDataObject$, createSuccessfulRemoteDataObject$ } from '../../shared/remote-data.utils';
+import { createPaginatedList } from '../../shared/testing/utils.test';
+import { TranslateModule } from '@ngx-translate/core';
+import { SystemWideAlertFormComponent } from './system-wide-alert-form.component';
+import { RequestService } from '../../core/data/request.service';
 import { NotificationsServiceStub } from '../../shared/testing/notifications-service.stub';
 import { RouterStub } from '../../shared/testing/router.stub';
-import { createPaginatedList } from '../../shared/testing/utils.test';
-import { SystemWideAlert } from '../system-wide-alert.model';
-import { SystemWideAlertFormComponent } from './system-wide-alert-form.component';
+import { NotificationsService } from '../../shared/notifications/notifications.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { SystemWideAlertModule } from '../system-wide-alert.module';
 
 describe('SystemWideAlertFormComponent', () => {
   let comp: SystemWideAlertFormComponent;
@@ -47,13 +37,13 @@ describe('SystemWideAlertFormComponent', () => {
       alertId: 1,
       message: 'Test alert message',
       active: true,
-      countdownTo: utcToZonedTime(countDownDate, 'UTC').toISOString(),
+      countdownTo: utcToZonedTime(countDownDate, 'UTC').toISOString()
     });
 
     systemWideAlertDataService = jasmine.createSpyObj('systemWideAlertDataService', {
       findAll: createSuccessfulRemoteDataObject$(createPaginatedList([systemWideAlert])),
       put: createSuccessfulRemoteDataObject$(systemWideAlert),
-      create: createSuccessfulRemoteDataObject$(systemWideAlert),
+      create: createSuccessfulRemoteDataObject$(systemWideAlert)
     });
 
     requestService = jasmine.createSpyObj('requestService', ['setStaleByHrefSubstring']);
@@ -62,13 +52,14 @@ describe('SystemWideAlertFormComponent', () => {
     router = new RouterStub();
 
     TestBed.configureTestingModule({
-      imports: [FormsModule, UiSwitchModule, TranslateModule.forRoot(), SystemWideAlertFormComponent],
+      imports: [FormsModule, SystemWideAlertModule, UiSwitchModule, TranslateModule.forRoot()],
+      declarations: [SystemWideAlertFormComponent],
       providers: [
-        { provide: SystemWideAlertDataService, useValue: systemWideAlertDataService },
-        { provide: NotificationsService, useValue: notificationsService },
-        { provide: Router, useValue: router },
-        { provide: RequestService, useValue: requestService },
-      ],
+        {provide: SystemWideAlertDataService, useValue: systemWideAlertDataService},
+        {provide: NotificationsService, useValue: notificationsService},
+        {provide: Router, useValue: router},
+        {provide: RequestService, useValue: requestService},
+      ]
     }).compileComponents();
   }));
 
@@ -99,8 +90,8 @@ describe('SystemWideAlertFormComponent', () => {
       comp.createForm();
       expect(comp.formMessage.value).toEqual('');
       expect(comp.formActive.value).toEqual(false);
-      expect(comp.time).toEqual({ hour: now.getHours(), minute: now.getMinutes() });
-      expect(comp.date).toEqual({ year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() });
+      expect(comp.time).toEqual({hour: now.getHours(), minute: now.getMinutes()});
+      expect(comp.date).toEqual({year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate()});
     });
   });
 
@@ -112,11 +103,11 @@ describe('SystemWideAlertFormComponent', () => {
 
       expect(comp.formMessage.value).toEqual(systemWideAlert.message);
       expect(comp.formActive.value).toEqual(true);
-      expect(comp.time).toEqual({ hour: countDownTo.getHours(), minute: countDownTo.getMinutes() });
+      expect(comp.time).toEqual({hour: countDownTo.getHours(), minute: countDownTo.getMinutes()});
       expect(comp.date).toEqual({
         year: countDownTo.getFullYear(),
         month: countDownTo.getMonth() + 1,
-        day: countDownTo.getDate(),
+        day: countDownTo.getDate()
       });
     });
   });
@@ -147,8 +138,8 @@ describe('SystemWideAlertFormComponent', () => {
       countDownDate.setHours(countDownDate.getHours() + 1);
       countDownDate.setMinutes(countDownDate.getMinutes() + 1);
 
-      comp.time = { hour: countDownDate.getHours(), minute: countDownDate.getMinutes() };
-      comp.date = { year: countDownDate.getFullYear(), month: countDownDate.getMonth() + 1, day: countDownDate.getDate() };
+      comp.time = {hour: countDownDate.getHours(), minute: countDownDate.getMinutes()};
+      comp.date = {year: countDownDate.getFullYear(), month: countDownDate.getMonth() + 1, day: countDownDate.getDate()};
 
       comp.updatePreviewTime();
 
@@ -170,14 +161,14 @@ describe('SystemWideAlertFormComponent', () => {
   });
 
   describe('save', () => {
-    it('should update the existing alert with the form values and show a success notification on success and navigate back', () => {
+    it('should update the exising alert with the form values and show a success notification on success and navigate back', () => {
       spyOn(comp, 'back');
       comp.currentAlert = systemWideAlert;
 
       comp.formMessage.patchValue('New message');
       comp.formActive.patchValue(true);
-      comp.time = { hour: 4, minute: 26 };
-      comp.date = { year: 2023, month: 1, day: 25 };
+      comp.time = {hour: 4, minute: 26};
+      comp.date = {year: 2023, month: 1, day: 25};
 
       const expectedAlert = new SystemWideAlert();
       expectedAlert.alertId = systemWideAlert.alertId;
@@ -193,14 +184,14 @@ describe('SystemWideAlertFormComponent', () => {
       expect(requestService.setStaleByHrefSubstring).toHaveBeenCalledWith('systemwidealerts');
       expect(comp.back).toHaveBeenCalled();
     });
-    it('should update the existing alert with the form values and show a success notification on success and not navigate back when false is provided to the save method', () => {
+    it('should update the exising alert with the form values and show a success notification on success and not navigate back when false is provided to the save method', () => {
       spyOn(comp, 'back');
       comp.currentAlert = systemWideAlert;
 
       comp.formMessage.patchValue('New message');
       comp.formActive.patchValue(true);
-      comp.time = { hour: 4, minute: 26 };
-      comp.date = { year: 2023, month: 1, day: 25 };
+      comp.time = {hour: 4, minute: 26};
+      comp.date = {year: 2023, month: 1, day: 25};
 
       const expectedAlert = new SystemWideAlert();
       expectedAlert.alertId = systemWideAlert.alertId;
@@ -216,14 +207,14 @@ describe('SystemWideAlertFormComponent', () => {
       expect(requestService.setStaleByHrefSubstring).toHaveBeenCalledWith('systemwidealerts');
       expect(comp.back).not.toHaveBeenCalled();
     });
-    it('should update the existing alert with the form values but add an empty countdown date when disabled and show a success notification on success', () => {
+    it('should update the exising alert with the form values but add an empty countdown date when disabled and show a success notification on success', () => {
       spyOn(comp, 'back');
       comp.currentAlert = systemWideAlert;
 
       comp.formMessage.patchValue('New message');
       comp.formActive.patchValue(true);
-      comp.time = { hour: 4, minute: 26 };
-      comp.date = { year: 2023, month: 1, day: 25 };
+      comp.time = {hour: 4, minute: 26};
+      comp.date = {year: 2023, month: 1, day: 25};
       comp.counterEnabled$.next(false);
 
       const expectedAlert = new SystemWideAlert();
@@ -239,15 +230,15 @@ describe('SystemWideAlertFormComponent', () => {
       expect(requestService.setStaleByHrefSubstring).toHaveBeenCalledWith('systemwidealerts');
       expect(comp.back).toHaveBeenCalled();
     });
-    it('should update the existing alert with the form values and show a error notification on error', () => {
+    it('should update the exising alert with the form values and show a error notification on error', () => {
       spyOn(comp, 'back');
       (systemWideAlertDataService.put as jasmine.Spy).and.returnValue(createFailedRemoteDataObject$());
       comp.currentAlert = systemWideAlert;
 
       comp.formMessage.patchValue('New message');
       comp.formActive.patchValue(true);
-      comp.time = { hour: 4, minute: 26 };
-      comp.date = { year: 2023, month: 1, day: 25 };
+      comp.time = {hour: 4, minute: 26};
+      comp.date = {year: 2023, month: 1, day: 25};
 
       const expectedAlert = new SystemWideAlert();
       expectedAlert.alertId = systemWideAlert.alertId;
@@ -269,8 +260,8 @@ describe('SystemWideAlertFormComponent', () => {
 
       comp.formMessage.patchValue('New message');
       comp.formActive.patchValue(true);
-      comp.time = { hour: 4, minute: 26 };
-      comp.date = { year: 2023, month: 1, day: 25 };
+      comp.time = {hour: 4, minute: 26};
+      comp.date = {year: 2023, month: 1, day: 25};
 
       const expectedAlert = new SystemWideAlert();
       expectedAlert.message = 'New message';
@@ -294,8 +285,8 @@ describe('SystemWideAlertFormComponent', () => {
 
       comp.formMessage.patchValue('New message');
       comp.formActive.patchValue(true);
-      comp.time = { hour: 4, minute: 26 };
-      comp.date = { year: 2023, month: 1, day: 25 };
+      comp.time = {hour: 4, minute: 26};
+      comp.date = {year: 2023, month: 1, day: 25};
 
       const expectedAlert = new SystemWideAlert();
       expectedAlert.message = 'New message';

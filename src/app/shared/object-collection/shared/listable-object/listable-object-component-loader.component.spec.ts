@@ -1,54 +1,40 @@
-import { ChangeDetectionStrategy } from '@angular/core';
-import {
-  ComponentFixture,
-  fakeAsync,
-  TestBed,
-  tick,
-  waitForAsync,
-} from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-
-import { APP_CONFIG } from '../../../../../config/app-config.interface';
-import { environment } from '../../../../../environments/environment.test';
-import { AuthService } from '../../../../core/auth/auth.service';
-import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
-import { AuthorizationDataService } from '../../../../core/data/feature-authorization/authorization-data.service';
-import { Context } from '../../../../core/shared/context.model';
-import { FileService } from '../../../../core/shared/file.service';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ListableObjectComponentLoaderComponent } from './listable-object-component-loader.component';
+import { ListableObject } from '../listable-object.model';
 import { GenericConstructor } from '../../../../core/shared/generic-constructor';
-import { ListableModule } from '../../../../core/shared/listable.module';
+import { Context } from '../../../../core/shared/context.model';
 import { ViewMode } from '../../../../core/shared/view-mode.model';
-import { XSRFService } from '../../../../core/xsrf/xsrf.service';
-import { DynamicComponentLoaderDirective } from '../../../abstract-component-loader/dynamic-component-loader.directive';
-import { DSONameServiceMock } from '../../../mocks/dso-name.service.mock';
-import { getMockThemeService } from '../../../mocks/theme-service.mock';
-import { ItemListElementComponent } from '../../../object-list/item-list-element/item-types/item/item-list-element.component';
-import { SearchResultListElementComponent } from '../../../object-list/search-result-list-element/search-result-list-element.component';
+import { ListableObjectDirective } from './listable-object.directive';
+import { TranslateModule } from '@ngx-translate/core';
+import { By } from '@angular/platform-browser';
+import { ThemeService } from '../../../theme-support/theme.service';
+import { ItemSearchResultListElementComponent } from '../../../object-list/search-result-list-element/item-search-result/item-types/item/item-search-result-list-element.component';
 import { ActivatedRouteStub } from '../../../testing/active-router.stub';
 import { AuthServiceStub } from '../../../testing/auth-service.stub';
 import { AuthorizationDataServiceStub } from '../../../testing/authorization-service.stub';
 import { FileServiceStub } from '../../../testing/file-service.stub';
 import { TruncatableServiceStub } from '../../../testing/truncatable-service.stub';
-import { ThemeService } from '../../../theme-support/theme.service';
+import { getMockThemeService } from '../../../mocks/theme-service.mock';
+import { APP_CONFIG } from '../../../../../config/app-config.interface';
+import { environment } from '../../../../../environments/environment.test';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../../core/auth/auth.service';
+import { AuthorizationDataService } from '../../../../core/data/feature-authorization/authorization-data.service';
+import { DSONameService } from '../../../../core/breadcrumbs/dso-name.service';
+import { DSONameServiceMock } from '../../../mocks/dso-name.service.mock';
+import { FileService } from '../../../../core/shared/file.service';
 import { TruncatableService } from '../../../truncatable/truncatable.service';
-import { ListableObject } from '../listable-object.model';
-import { ListableObjectComponentLoaderComponent } from './listable-object-component-loader.component';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { SearchResultListElementComponent } from '../../../object-list/search-result-list-element/search-result-list-element.component';
+import { XSRFService } from 'src/app/core/xsrf/xsrf.service';
 
 const testType = 'TestType';
 const testContext = Context.Search;
 const testViewMode = ViewMode.StandalonePage;
 
-export class TestType extends ListableObject {
+class TestType extends ListableObject {
   getRenderTypes(): (string | GenericConstructor<ListableObject>)[] {
     return [testType];
-  }
-  firstMetadataValue(): string {
-    return '';
-  }
-  allMetadata() {
-    return [];
   }
 }
 
@@ -72,12 +58,11 @@ describe('ListableObjectComponentLoaderComponent', () => {
     truncatableService = new TruncatableServiceStub();
 
     void TestBed.configureTestingModule({
-      imports: [
-        TranslateModule.forRoot(),
+      imports: [TranslateModule.forRoot()],
+      declarations: [
+        ItemSearchResultListElementComponent,
         ListableObjectComponentLoaderComponent,
-        ListableModule,
-        ItemListElementComponent,
-        DynamicComponentLoaderDirective,
+        ListableObjectDirective,
       ],
       providers: [
         { provide: APP_CONFIG, useValue: environment },
@@ -89,17 +74,18 @@ describe('ListableObjectComponentLoaderComponent', () => {
         { provide: ThemeService, useValue: themeService },
         { provide: TruncatableService, useValue: truncatableService },
         { provide: XSRFService, useValue: {} },
-      ],
+      ]
     }).overrideComponent(ListableObjectComponentLoaderComponent, {
       set: {
         changeDetection: ChangeDetectionStrategy.Default,
-      },
+      }
     }).compileComponents();
   }));
 
   beforeEach(waitForAsync(() => {
     fixture = TestBed.createComponent(ListableObjectComponentLoaderComponent);
     comp = fixture.componentInstance;
+
     comp.object = new TestType();
     comp.viewMode = testViewMode;
     comp.context = testContext;
@@ -111,7 +97,7 @@ describe('ListableObjectComponentLoaderComponent', () => {
 
   describe('When the component is rendered', () => {
     it('should call the getListableObjectComponent function with the right types, view mode and context', () => {
-      expect(comp.getComponent).toHaveBeenCalled();
+      expect(comp.getComponent).toHaveBeenCalledWith([testType], testViewMode, testContext);
     });
 
     it('should connectInputsAndOutputs of loaded component', () => {
@@ -124,29 +110,29 @@ describe('ListableObjectComponentLoaderComponent', () => {
     let reloadedObject: any;
 
     beforeEach(() => {
-      spyOn(comp, 'instantiateComponent').and.returnValue(null);
-      spyOn(comp.contentChange, 'emit').and.returnValue(null);
+      spyOn((comp as any), 'instantiateComponent').and.returnValue(null);
+      spyOn((comp as any).contentChange, 'emit').and.returnValue(null);
 
       listableComponent = fixture.debugElement.query(By.css('ds-search-result-list-element')).componentInstance;
       reloadedObject = 'object';
     });
 
     it('should re-instantiate the listable component', fakeAsync(() => {
-      expect(comp.instantiateComponent).not.toHaveBeenCalled();
+      expect((comp as any).instantiateComponent).not.toHaveBeenCalled();
 
-      listableComponent.reloadedObject.emit(reloadedObject);
+      (listableComponent as any).reloadedObject.emit(reloadedObject);
       tick(200);
 
-      expect(comp.instantiateComponent).toHaveBeenCalledWith();
+      expect((comp as any).instantiateComponent).toHaveBeenCalledWith(reloadedObject, undefined);
     }));
 
     it('should re-emit it as a contentChange', fakeAsync(() => {
-      expect(comp.contentChange.emit).not.toHaveBeenCalled();
+      expect((comp as any).contentChange.emit).not.toHaveBeenCalled();
 
-      listableComponent.reloadedObject.emit(reloadedObject);
+      (listableComponent as any).reloadedObject.emit(reloadedObject);
       tick(200);
 
-      expect(comp.contentChange.emit).toHaveBeenCalledWith(reloadedObject);
+      expect((comp as any).contentChange.emit).toHaveBeenCalledWith(reloadedObject);
     }));
 
   });
