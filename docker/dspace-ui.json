@@ -3,7 +3,7 @@
     {
       "name": "dspace-ui",
       "cwd": "/app",
-      "args": "--p 4200 --host 0.0.0.0 --disable-host-check",
+      "args": "--p 4000 --host 0.0.0.0 --disable-host-check",
       "script": "dist/server/main.js",
       "instances": "max",
       "exec_mode": "cluster"
