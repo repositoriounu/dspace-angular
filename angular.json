@@ -107,7 +107,8 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
             "browserTarget": "dspace-angular:build",
-            "port": 4000
+            "port": 4000,
+            "disableHostCheck": true
           },
           "configurations": {
             "development": {
