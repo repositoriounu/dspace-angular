@@ -114,7 +114,8 @@
               "buildTarget": "dspace-angular:build:development"
             },
             "production": {
-              "buildTarget": "dspace-angular:build:production"
+              "buildTarget": "dspace-angular:build:production",
+              "disableHostCheck": true
             }
           }
         },
