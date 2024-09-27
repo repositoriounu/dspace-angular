@@ -20,6 +20,8 @@ RUN yarn build:prod
 FROM node:18-alpine
 RUN npm install --global pm2
 
+RUN npm i @angular/cli@15.0.0
+
 COPY --chown=node:node --from=build /app/dist /app/dist
 COPY --chown=node:node config /app/config
 COPY --chown=node:node docker/dspace-ui.json /app/dspace-ui.json
@@ -28,4 +30,5 @@ WORKDIR /app
 USER node
 ENV NODE_ENV production
 EXPOSE 4000
-CMD pm2 start dspace-ui.json --json
+# CMD pm2 start dspace-ui.json --json
+CMD ng serve --open --host 0.0.0.0 --port 4000 --disable-host-check
