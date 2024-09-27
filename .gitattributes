@@ -14,6 +14,3 @@
 *.scss eol=lf
 *.html eol=lf
 *.svg eol=lf
-
-# Generated documentation should have LF line endings to reduce git noise
-docs/lint/**/*.md eol=lf
