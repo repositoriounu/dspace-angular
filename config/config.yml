@@ -1,5 +1,0 @@
-rest:
-  ssl: true
-  host: apirepositorio.unu.edu.pe
-  port: 443
-  nameSpace: /server
