@@ -1,25 +1,51 @@
-<ds-themed-loading *ngIf="(loading$ | async)"></ds-themed-loading>
-<ul *ngIf="!(loading$ | async)" class="user-menu" role="menu"
-    [ngClass]="inExpandableNavbar ? 'user-menu-mobile pb-2 mb-2 border-bottom' : 'user-menu-dropdown'"
-    [attr.aria-label]="'nav.user-profile-menu-and-logout' |translate" id="user-menu-dropdown">
+<ds-themed-loading *ngIf="loading$ | async"></ds-themed-loading>
+<ul
+  *ngIf="!(loading$ | async)"
+  class="user-menu"
+  role="menu"
+  [ngClass]="
+    inExpandableNavbar
+      ? 'user-menu-mobile pb-2 mb-2 border-bottom'
+      : 'user-menu-dropdown'
+  "
+  [attr.aria-label]="'nav.user-profile-menu-and-logout' | translate"
+  id="user-menu-dropdown"
+>
   <li class="ds-menu-item-wrapper username-email-wrapper" role="presentation">
-    {{dsoNameService.getName(user$ | async)}}<br>
-    <span class="text-muted">{{(user$ | async)?.email}}</span>
+    {{ dsoNameService.getName(user$ | async) }}<br />
+    <span class="text-muted">{{ (user$ | async)?.email }}</span>
   </li>
   <li class="ds-menu-item-wrapper" role="presentation">
-    <a class="ds-menu-item" role="menuitem"
-       [routerLink]="[profileRoute]"
-       routerLinkActive="active">{{'nav.profile' | translate}}</a>
+    <a
+      class="ds-menu-item"
+      role="menuitem"
+      [routerLink]="[profileRoute]"
+      routerLinkActive="active"
+    >
+      <span>
+        {{ "nav.profile" | translate }}
+      </span>
+    </a>
   </li>
   <li class="ds-menu-item-wrapper" role="presentation">
-    <a class="ds-menu-item" role="menuitem"
-       [routerLink]="[mydspaceRoute]"
-       routerLinkActive="active">{{'nav.mydspace' | translate}}</a>
+    <a
+      class="ds-menu-item"
+      role="menuitem"
+      [routerLink]="[mydspaceRoute]"
+      routerLinkActive="active"
+    >
+      <span>{{ "nav.mydspace" | translate }}</span>
+    </a>
   </li>
   <li class="ds-menu-item-wrapper" role="presentation">
-    <a class="ds-menu-item" role="menuitem"
-       [routerLink]="[subscriptionsRoute]"
-       routerLinkActive="active">{{'nav.subscriptions' | translate}}</a>
+    <a
+      class="ds-menu-item"
+      role="menuitem"
+      [routerLink]="[subscriptionsRoute]"
+      routerLinkActive="active"
+    >
+      <span>{{ "nav.subscriptions" | translate }}</span>
+    </a>
   </li>
   <ng-container *ngIf="!inExpandableNavbar">
     <li class="dropdown-divider" aria-hidden="true"></li>
@@ -28,5 +54,3 @@
     </li>
   </ng-container>
 </ul>
-
-
