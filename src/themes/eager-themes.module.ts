@@ -10,10 +10,6 @@ import { EagerThemeModule as DSpaceEagerThemeModule } from './dspace/eager-theme
  * Themes that aren't in use should not be imported here so they don't take up unnecessary space in the main bundle.
  */
 @NgModule({
-  imports: [
-    DSpaceEagerThemeModule,
-    // CustomEagerThemeModule,
-  ],
+  imports: [DSpaceEagerThemeModule],
 })
-export class EagerThemesModule {
-}
+export class EagerThemesModule {}

@@ -20,9 +20,9 @@
   button#navbar-toggler {
     color: var(--ds-header-icon-color);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--ds-header-icon-color-hover);
     }
   }
-
 }
