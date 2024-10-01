@@ -1,5 +1,4 @@
 {
-
   // "401.help": "You're not authorized to access this page. You can use the button below to get back to the home page.",
   "401.help": "غير مصرح لك بالوصول إلى هذه الصفحة. يمكنك استخدام الزر أدناه للعودة إلى الصفحة الرئيسية.",
 
@@ -274,7 +273,7 @@
   "admin.registries.schema.breadcrumbs": "مخطط الميتاداتا",
 
   // "admin.registries.schema.description": "This is the metadata schema for \"{{namespace}}\".",
-  "admin.registries.schema.description": "هذا هو مخطط الميتاداتا لـ  \"{{namespace}}\".",
+  "admin.registries.schema.description": 'هذا هو مخطط الميتاداتا لـ  "{{namespace}}".',
 
   // "admin.registries.schema.fields.select": "Select",
   "admin.registries.schema.fields.select": "تحديد",
@@ -322,7 +321,7 @@
   "admin.registries.schema.head": "مخطط الميتاداتا",
 
   // "admin.registries.schema.notification.created": "Successfully created metadata schema \"{{prefix}}\"",
-  "admin.registries.schema.notification.created": "تم بنجاح إنشاء مخطط الميتاداتا \"{{prefix}}\"",
+  "admin.registries.schema.notification.created": 'تم بنجاح إنشاء مخطط الميتاداتا "{{prefix}}"',
 
   // "admin.registries.schema.notification.deleted.failure": "Failed to delete {{amount}} metadata schemas",
   "admin.registries.schema.notification.deleted.failure": "فشل حذف {{amount}} مخطط ميتاداتا",
@@ -331,13 +330,13 @@
   "admin.registries.schema.notification.deleted.success": "تم حذف {{amount}} مخطط ميتاداتا بنجاح",
 
   // "admin.registries.schema.notification.edited": "Successfully edited metadata schema \"{{prefix}}\"",
-  "admin.registries.schema.notification.edited": "تم بنجاح تحرير مخطط الميتاداتا \"{{prefix}}\"",
+  "admin.registries.schema.notification.edited": 'تم بنجاح تحرير مخطط الميتاداتا "{{prefix}}"',
 
   // "admin.registries.schema.notification.failure": "Error",
   "admin.registries.schema.notification.failure": "خطأ",
 
   // "admin.registries.schema.notification.field.created": "Successfully created metadata field \"{{field}}\"",
-  "admin.registries.schema.notification.field.created": "تم بنجاح إنشاء حقل الميتاداتا  \"{{field}}\"",
+  "admin.registries.schema.notification.field.created": 'تم بنجاح إنشاء حقل الميتاداتا  "{{field}}"',
 
   // "admin.registries.schema.notification.field.deleted.failure": "Failed to delete {{amount}} metadata fields",
   "admin.registries.schema.notification.field.deleted.failure": "فشل حذف {{amount}} حقل ميتاداتا",
@@ -346,7 +345,7 @@
   "admin.registries.schema.notification.field.deleted.success": "تم حذف {{amount}} حقل ميتاداتا بنجاح",
 
   // "admin.registries.schema.notification.field.edited": "Successfully edited metadata field \"{{field}}\"",
-  "admin.registries.schema.notification.field.edited": "تم بنجاح تحرير حقل الميتاداتا \"{{field}}\"",
+  "admin.registries.schema.notification.field.edited": 'تم بنجاح تحرير حقل الميتاداتا "{{field}}"',
 
   // "admin.registries.schema.notification.success": "Success",
   "admin.registries.schema.notification.success": "نجاح",
@@ -448,13 +447,13 @@
   "admin.access-control.epeople.table.edit": "تحرير",
 
   // "admin.access-control.epeople.table.edit.buttons.edit": "Edit \"{{name}}\"",
-  "admin.access-control.epeople.table.edit.buttons.edit": "تحرير \"{{name}}\"",
+  "admin.access-control.epeople.table.edit.buttons.edit": 'تحرير "{{name}}"',
 
   // "admin.access-control.epeople.table.edit.buttons.edit-disabled": "You are not authorized to edit this group",
   "admin.access-control.epeople.table.edit.buttons.edit-disabled": "غير مصرح لك بتحرير هذه المجموعة",
 
   // "admin.access-control.epeople.table.edit.buttons.remove": "Delete \"{{name}}\"",
-  "admin.access-control.epeople.table.edit.buttons.remove": "حذف \"{{name}}\"",
+  "admin.access-control.epeople.table.edit.buttons.remove": 'حذف "{{name}}"',
 
   // "admin.access-control.epeople.no-items": "No EPeople to show.",
   "admin.access-control.epeople.no-items": "لا يوجد أشخاص إلكترونيين للعرض.",
@@ -487,28 +486,28 @@
   "admin.access-control.epeople.form.return": "رجوع",
 
   // "admin.access-control.epeople.form.notification.created.success": "Successfully created EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.created.success": "تم إنشاء الشخص الإلكتروني \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.created.success": 'تم إنشاء الشخص الإلكتروني "{{name}}"',
 
   // "admin.access-control.epeople.form.notification.created.failure": "Failed to create EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.created.failure": "فشل إنشاء الشخص الإلكتروني \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.created.failure": 'فشل إنشاء الشخص الإلكتروني "{{name}}"',
 
   // "admin.access-control.epeople.form.notification.created.failure.emailInUse": "Failed to create EPerson \"{{name}}\", email \"{{email}}\" already in use.",
-  "admin.access-control.epeople.form.notification.created.failure.emailInUse": "فشل إنشاء الشخص الإلكتروني \"{{name}}\", البريد الإلكتروني \"{{email}}\" قيد الاستخدام بالفعل.",
+  "admin.access-control.epeople.form.notification.created.failure.emailInUse": 'فشل إنشاء الشخص الإلكتروني "{{name}}", البريد الإلكتروني "{{email}}" قيد الاستخدام بالفعل.',
 
   // "admin.access-control.epeople.form.notification.edited.failure.emailInUse": "Failed to edit EPerson \"{{name}}\", email \"{{email}}\" already in use.",
-  "admin.access-control.epeople.form.notification.edited.failure.emailInUse": "فشل تحرير الشخص الإلكتروني \"{{name}}\", البريد الإلكتروني \"{{email}}\" قيد الاستخدام بالفعل.",
+  "admin.access-control.epeople.form.notification.edited.failure.emailInUse": 'فشل تحرير الشخص الإلكتروني "{{name}}", البريد الإلكتروني "{{email}}" قيد الاستخدام بالفعل.',
 
   // "admin.access-control.epeople.form.notification.edited.success": "Successfully edited EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.edited.success": "تم تحرير الشخص الإلكتروني \"{{name}}\"بنجاح",
+  "admin.access-control.epeople.form.notification.edited.success": 'تم تحرير الشخص الإلكتروني "{{name}}"بنجاح',
 
   // "admin.access-control.epeople.form.notification.edited.failure": "Failed to edit EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.edited.failure": "فشل تحرير الشخص الإلكتروني \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.edited.failure": 'فشل تحرير الشخص الإلكتروني "{{name}}"',
 
   // "admin.access-control.epeople.form.notification.deleted.success": "Successfully deleted EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.deleted.success": "تم حذف الشخص الإلكتروني \"{{name}}\"بنجاح",
+  "admin.access-control.epeople.form.notification.deleted.success": 'تم حذف الشخص الإلكتروني "{{name}}"بنجاح',
 
   // "admin.access-control.epeople.form.notification.deleted.failure": "Failed to delete EPerson \"{{name}}\"",
-  "admin.access-control.epeople.form.notification.deleted.failure": "فشل حذف الشخص الإلكتروني \"{{name}}\"",
+  "admin.access-control.epeople.form.notification.deleted.failure": 'فشل حذف الشخص الإلكتروني "{{name}}"',
 
   // "admin.access-control.epeople.form.groupsEPersonIsMemberOf": "Member of these groups:",
   "admin.access-control.epeople.form.groupsEPersonIsMemberOf": "عضو في هذه المجموعات:",
@@ -529,10 +528,10 @@
   "admin.access-control.epeople.form.goToGroups": "أضف إلى مجموعات",
 
   // "admin.access-control.epeople.notification.deleted.failure": "Error occurred when trying to delete EPerson with id \"{{id}}\" with code: \"{{statusCode}}\" and message: \"{{restResponse.errorMessage}}\"",
-  "admin.access-control.epeople.notification.deleted.failure": "حدث خطأ عند محاولة حذف شخص إلكتروني بالمعرف \"{{id}}\" بالرمز: \"{{statusCode}}\" والرسالة: \"{{restResponse.errorMessage}}\"",
+  "admin.access-control.epeople.notification.deleted.failure": 'حدث خطأ عند محاولة حذف شخص إلكتروني بالمعرف "{{id}}" بالرمز: "{{statusCode}}" والرسالة: "{{restResponse.errorMessage}}"',
 
   // "admin.access-control.epeople.notification.deleted.success": "Successfully deleted EPerson: \"{{name}}\"",
-  "admin.access-control.epeople.notification.deleted.success": "تم حذف الشخص الإلكتروني: \"{{name}}\"بنجاح",
+  "admin.access-control.epeople.notification.deleted.success": 'تم حذف الشخص الإلكتروني: "{{name}}"بنجاح',
 
   // "admin.access-control.groups.title": "Groups",
   "admin.access-control.groups.title": "المجموعات",
@@ -586,28 +585,28 @@
   "admin.access-control.groups.table.edit": "تحرير",
 
   // "admin.access-control.groups.table.edit.buttons.edit": "Edit \"{{name}}\"",
-  "admin.access-control.groups.table.edit.buttons.edit": "تحرير \"{{name}}\"",
+  "admin.access-control.groups.table.edit.buttons.edit": 'تحرير "{{name}}"',
 
   // "admin.access-control.groups.table.edit.buttons.remove": "Delete \"{{name}}\"",
-  "admin.access-control.groups.table.edit.buttons.remove": "حذف \"{{name}}\"",
+  "admin.access-control.groups.table.edit.buttons.remove": 'حذف "{{name}}"',
 
   // "admin.access-control.groups.no-items": "No groups found with this in their name or this as UUID",
   "admin.access-control.groups.no-items": "لم يتم العثور على أي مجموعات بهذا في اسمها أو كمعرف عمومي فريد",
 
   // "admin.access-control.groups.notification.deleted.success": "Successfully deleted group \"{{name}}\"",
-  "admin.access-control.groups.notification.deleted.success": "تم حذف المجموعة \"{{name}}\"بنجاح",
+  "admin.access-control.groups.notification.deleted.success": 'تم حذف المجموعة "{{name}}"بنجاح',
 
   // "admin.access-control.groups.notification.deleted.failure.title": "Failed to delete group \"{{name}}\"",
-  "admin.access-control.groups.notification.deleted.failure.title": "فشل حذف المجموعة \"{{name}}\"",
+  "admin.access-control.groups.notification.deleted.failure.title": 'فشل حذف المجموعة "{{name}}"',
 
   // "admin.access-control.groups.notification.deleted.failure.content": "Cause: \"{{cause}}\"",
-  "admin.access-control.groups.notification.deleted.failure.content": "السبب: \"{{cause}}\"",
+  "admin.access-control.groups.notification.deleted.failure.content": 'السبب: "{{cause}}"',
 
   // "admin.access-control.groups.form.alert.permanent": "This group is permanent, so it can't be edited or deleted. You can still add and remove group members using this page.",
   "admin.access-control.groups.form.alert.permanent": "هذه المجموعة دائمة، لذا لا يمكن تحريرها أو حذفها. لكن لايزال بإمكانك إضافة وإزالة أعضاء المجموعة باستخدام هذه الصفحة..",
 
   // "admin.access-control.groups.form.alert.workflowGroup": "This group can’t be modified or deleted because it corresponds to a role in the submission and workflow process in the \"{{name}}\" {{comcol}}. You can delete it from the <a href='{{comcolEditRolesRoute}}'>\"assign roles\"</a> tab on the edit {{comcol}} page. You can still add and remove group members using this page.",
-  "admin.access-control.groups.form.alert.workflowGroup": "لا يمكن تعديل هذه المجموعة أو حذفها لأنها تتوافق مع دور في عملية التقديم وسير العمل في \"{{name}}\" {{comcol}}. يمكنك حذفها من تبويب <a href='{{comcolEditRolesRoute}}'>\"تعيين الأدوار\"</a> في صفحة تحرير {{comcol}}. لا يزال بإمكانك إضافة وإزالة أعضاء المجموعة باستخدام هذه الصفحة.",
+  "admin.access-control.groups.form.alert.workflowGroup": 'لا يمكن تعديل هذه المجموعة أو حذفها لأنها تتوافق مع دور في عملية التقديم وسير العمل في "{{name}}" {{comcol}}. يمكنك حذفها من تبويب <a href=\'{{comcolEditRolesRoute}}\'>"تعيين الأدوار"</a> في صفحة تحرير {{comcol}}. لا يزال بإمكانك إضافة وإزالة أعضاء المجموعة باستخدام هذه الصفحة.',
 
   // "admin.access-control.groups.form.head.create": "Create group",
   "admin.access-control.groups.form.head.create": "إنشاء مجموعة",
@@ -625,31 +624,31 @@
   "admin.access-control.groups.form.groupDescription": "الوصف",
 
   // "admin.access-control.groups.form.notification.created.success": "Successfully created Group \"{{name}}\"",
-  "admin.access-control.groups.form.notification.created.success": "تم إنشاء المجموعة \"{{name}}\"بنجاح",
+  "admin.access-control.groups.form.notification.created.success": 'تم إنشاء المجموعة "{{name}}"بنجاح',
 
   // "admin.access-control.groups.form.notification.created.failure": "Failed to create Group \"{{name}}\"",
-  "admin.access-control.groups.form.notification.created.failure": "فشل إنشاء المجموعة \"{{name}}\"",
+  "admin.access-control.groups.form.notification.created.failure": 'فشل إنشاء المجموعة "{{name}}"',
 
   // "admin.access-control.groups.form.notification.created.failure.groupNameInUse": "Failed to create Group with name: \"{{name}}\", make sure the name is not already in use.",
-  "admin.access-control.groups.form.notification.created.failure.groupNameInUse": "فشل إنشاء المجموعة بالاسم: \"{{name}}\"، يرجى التأكد أن الاسم ليس قيد الاستخدام بالفعل.",
+  "admin.access-control.groups.form.notification.created.failure.groupNameInUse": 'فشل إنشاء المجموعة بالاسم: "{{name}}"، يرجى التأكد أن الاسم ليس قيد الاستخدام بالفعل.',
 
   // "admin.access-control.groups.form.notification.edited.failure": "Failed to edit Group \"{{name}}\"",
-  "admin.access-control.groups.form.notification.edited.failure": "فشل تحرير المجموعة \"{{name}}\"",
+  "admin.access-control.groups.form.notification.edited.failure": 'فشل تحرير المجموعة "{{name}}"',
 
   // "admin.access-control.groups.form.notification.edited.failure.groupNameInUse": "Name \"{{name}}\" already in use!",
-  "admin.access-control.groups.form.notification.edited.failure.groupNameInUse": "الاسم \"{{name}}\" قيد الاستخدام بالفعل!",
+  "admin.access-control.groups.form.notification.edited.failure.groupNameInUse": 'الاسم "{{name}}" قيد الاستخدام بالفعل!',
 
   // "admin.access-control.groups.form.notification.edited.success": "Successfully edited Group \"{{name}}\"",
-  "admin.access-control.groups.form.notification.edited.success": "تم تحرير المجموعة \"{{name}}\"بنجاح",
+  "admin.access-control.groups.form.notification.edited.success": 'تم تحرير المجموعة "{{name}}"بنجاح',
 
   // "admin.access-control.groups.form.actions.delete": "Delete Group",
   "admin.access-control.groups.form.actions.delete": "حذف المجموعة",
 
   // "admin.access-control.groups.form.delete-group.modal.header": "Delete Group \"{{ dsoName }}\"",
-  "admin.access-control.groups.form.delete-group.modal.header": "حذف المجموعة \"{{ dsoName }}\"",
+  "admin.access-control.groups.form.delete-group.modal.header": 'حذف المجموعة "{{ dsoName }}"',
 
   // "admin.access-control.groups.form.delete-group.modal.info": "Are you sure you want to delete Group \"{{ dsoName }}\"",
-  "admin.access-control.groups.form.delete-group.modal.info": "هل أنت متأكد من أنك ترغب في حذف المجموعة \"{{ dsoName }}\"",
+  "admin.access-control.groups.form.delete-group.modal.info": 'هل أنت متأكد من أنك ترغب في حذف المجموعة "{{ dsoName }}"',
 
   // "admin.access-control.groups.form.delete-group.modal.cancel": "Cancel",
   "admin.access-control.groups.form.delete-group.modal.cancel": "إلغاء",
@@ -658,13 +657,13 @@
   "admin.access-control.groups.form.delete-group.modal.confirm": "حذف",
 
   // "admin.access-control.groups.form.notification.deleted.success": "Successfully deleted group \"{{ name }}\"",
-  "admin.access-control.groups.form.notification.deleted.success": "تم حذف المجموعة \"{{ name }}\"بنجاح",
+  "admin.access-control.groups.form.notification.deleted.success": 'تم حذف المجموعة "{{ name }}"بنجاح',
 
   // "admin.access-control.groups.form.notification.deleted.failure.title": "Failed to delete group \"{{ name }}\"",
-  "admin.access-control.groups.form.notification.deleted.failure.title": "فشل حذف المجموعة \"{{ name }}\"",
+  "admin.access-control.groups.form.notification.deleted.failure.title": 'فشل حذف المجموعة "{{ name }}"',
 
   // "admin.access-control.groups.form.notification.deleted.failure.content": "Cause: \"{{ cause }}\"",
-  "admin.access-control.groups.form.notification.deleted.failure.content": "السبب: \"{{ cause }}\"",
+  "admin.access-control.groups.form.notification.deleted.failure.content": 'السبب: "{{ cause }}"',
 
   // "admin.access-control.groups.form.members-list.head": "EPeople",
   "admin.access-control.groups.form.members-list.head": "أشخاص إلكترونيين",
@@ -700,22 +699,22 @@
   "admin.access-control.groups.form.members-list.table.edit": "إزالة / إضافة",
 
   // "admin.access-control.groups.form.members-list.table.edit.buttons.remove": "Remove member with name \"{{name}}\"",
-  "admin.access-control.groups.form.members-list.table.edit.buttons.remove": "حذف عضو باسم \"{{name}}\"",
+  "admin.access-control.groups.form.members-list.table.edit.buttons.remove": 'حذف عضو باسم "{{name}}"',
 
   // "admin.access-control.groups.form.members-list.notification.success.addMember": "Successfully added member: \"{{name}}\"",
-  "admin.access-control.groups.form.members-list.notification.success.addMember": "تمت إضافة العضو: \"{{name}}\"بنجاح",
+  "admin.access-control.groups.form.members-list.notification.success.addMember": 'تمت إضافة العضو: "{{name}}"بنجاح',
 
   // "admin.access-control.groups.form.members-list.notification.failure.addMember": "Failed to add member: \"{{name}}\"",
-  "admin.access-control.groups.form.members-list.notification.failure.addMember": "فشل إضافة العضو: \"{{name}}\"",
+  "admin.access-control.groups.form.members-list.notification.failure.addMember": 'فشل إضافة العضو: "{{name}}"',
 
   // "admin.access-control.groups.form.members-list.notification.success.deleteMember": "Successfully deleted member: \"{{name}}\"",
-  "admin.access-control.groups.form.members-list.notification.success.deleteMember": "تم حذف العضو: \"{{name}}\"بنجاح",
+  "admin.access-control.groups.form.members-list.notification.success.deleteMember": 'تم حذف العضو: "{{name}}"بنجاح',
 
   // "admin.access-control.groups.form.members-list.notification.failure.deleteMember": "Failed to delete member: \"{{name}}\"",
-  "admin.access-control.groups.form.members-list.notification.failure.deleteMember": "فشل حذف العضو: \"{{name}}\"",
+  "admin.access-control.groups.form.members-list.notification.failure.deleteMember": 'فشل حذف العضو: "{{name}}"',
 
   // "admin.access-control.groups.form.members-list.table.edit.buttons.add": "Add member with name \"{{name}}\"",
-  "admin.access-control.groups.form.members-list.table.edit.buttons.add": "إضافة عضو باسم \"{{name}}\"",
+  "admin.access-control.groups.form.members-list.table.edit.buttons.add": 'إضافة عضو باسم "{{name}}"',
 
   // "admin.access-control.groups.form.members-list.notification.failure.noActiveGroup": "No current active group, submit a name first.",
   "admin.access-control.groups.form.members-list.notification.failure.noActiveGroup": "لا توجد مجموعة نشطة حالياً، قم بتقديم الاسم أولاً.",
@@ -727,7 +726,7 @@
   "admin.access-control.groups.form.members-list.no-items": "لم يتم العثور على أي أشخاص إلكترونيين في هذا البحث",
 
   // "admin.access-control.groups.form.subgroups-list.notification.failure": "Something went wrong: \"{{cause}}\"",
-  "admin.access-control.groups.form.subgroups-list.notification.failure": "هناك خطأ ما: \"{{cause}}\"",
+  "admin.access-control.groups.form.subgroups-list.notification.failure": 'هناك خطأ ما: "{{cause}}"',
 
   // "admin.access-control.groups.form.subgroups-list.head": "Groups",
   "admin.access-control.groups.form.subgroups-list.head": "المجموعات",
@@ -757,22 +756,22 @@
   "admin.access-control.groups.form.subgroups-list.table.edit": "إزالة / إضافة",
 
   // "admin.access-control.groups.form.subgroups-list.table.edit.buttons.remove": "Remove subgroup with name \"{{name}}\"",
-  "admin.access-control.groups.form.subgroups-list.table.edit.buttons.remove": "إزالة مجموعة فرعية باسم \"{{name}}\"",
+  "admin.access-control.groups.form.subgroups-list.table.edit.buttons.remove": 'إزالة مجموعة فرعية باسم "{{name}}"',
 
   // "admin.access-control.groups.form.subgroups-list.table.edit.buttons.add": "Add subgroup with name \"{{name}}\"",
-  "admin.access-control.groups.form.subgroups-list.table.edit.buttons.add": "إضافة مجموعة فرعية باسم \"{{name}}\"",
+  "admin.access-control.groups.form.subgroups-list.table.edit.buttons.add": 'إضافة مجموعة فرعية باسم "{{name}}"',
 
   // "admin.access-control.groups.form.subgroups-list.notification.success.addSubgroup": "Successfully added subgroup: \"{{name}}\"",
-  "admin.access-control.groups.form.subgroups-list.notification.success.addSubgroup": "تمت إضافة المجموعة الفرعية: \"{{name}}\"بنجاح",
+  "admin.access-control.groups.form.subgroups-list.notification.success.addSubgroup": 'تمت إضافة المجموعة الفرعية: "{{name}}"بنجاح',
 
   // "admin.access-control.groups.form.subgroups-list.notification.failure.addSubgroup": "Failed to add subgroup: \"{{name}}\"",
-  "admin.access-control.groups.form.subgroups-list.notification.failure.addSubgroup": "فشل إضافة مجموعة فرعية: \"{{name}}\"",
+  "admin.access-control.groups.form.subgroups-list.notification.failure.addSubgroup": 'فشل إضافة مجموعة فرعية: "{{name}}"',
 
   // "admin.access-control.groups.form.subgroups-list.notification.success.deleteSubgroup": "Successfully deleted subgroup: \"{{name}}\"",
-  "admin.access-control.groups.form.subgroups-list.notification.success.deleteSubgroup": "تم حذف المجموعة الفرعية: \"{{name}}\"بنجاح",
+  "admin.access-control.groups.form.subgroups-list.notification.success.deleteSubgroup": 'تم حذف المجموعة الفرعية: "{{name}}"بنجاح',
 
   // "admin.access-control.groups.form.subgroups-list.notification.failure.deleteSubgroup": "Failed to delete subgroup: \"{{name}}\"",
-  "admin.access-control.groups.form.subgroups-list.notification.failure.deleteSubgroup": "فشل حذف المجموعة الفرعية: \"{{name}}\"",
+  "admin.access-control.groups.form.subgroups-list.notification.failure.deleteSubgroup": 'فشل حذف المجموعة الفرعية: "{{name}}"',
 
   // "admin.access-control.groups.form.subgroups-list.notification.failure.noActiveGroup": "No current active group, submit a name first.",
   "admin.access-control.groups.form.subgroups-list.notification.failure.noActiveGroup": "لا توجد مجموعة نشطة حالياً، قم بتقديم الاسم أولاً.",
@@ -1399,22 +1398,22 @@
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit": "إزالة / إضافة",
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit.buttons.remove": "Remove member with name \"{{name}}\"",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit.buttons.remove": "إزالة عضو باسم \"{{name}}\"",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit.buttons.remove": 'إزالة عضو باسم "{{name}}"',
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.success.addMember": "Successfully added member: \"{{name}}\"",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.success.addMember": "تمت إضافة العضو: \"{{name}}\"بنجاح",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.success.addMember": 'تمت إضافة العضو: "{{name}}"بنجاح',
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.addMember": "Failed to add member: \"{{name}}\"",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.addMember": "فشل إضافة العضو: \"{{name}}\"",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.addMember": 'فشل إضافة العضو: "{{name}}"',
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.success.deleteMember": "Successfully deleted member: \"{{name}}\"",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.success.deleteMember": "تم حذف العضو: \"{{name}}\"بنجاح",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.success.deleteMember": 'تم حذف العضو: "{{name}}"بنجاح',
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.deleteMember": "Failed to delete member: \"{{name}}\"",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.deleteMember": "فشل حذف العضو: \"{{name}}\"",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.deleteMember": 'فشل حذف العضو: "{{name}}"',
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit.buttons.add": "Add member with name \"{{name}}\"",
-  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit.buttons.add": "إضافة عضو باسم \"{{name}}\"",
+  "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.table.edit.buttons.add": 'إضافة عضو باسم "{{name}}"',
 
   // "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.noActiveGroup": "No current active group, submit a name first.",
   "advanced-workflow-action-select-reviewer.groups.form.reviewers-list.notification.failure.noActiveGroup": "لا توجد مجموعة نشطة حالياً، قم بتقديم الاسم أولاً.",
@@ -1462,7 +1461,7 @@
   "bitstream.edit.bitstream": "تدفق البت: ",
 
   // "bitstream.edit.form.description.hint": "Optionally, provide a brief description of the file, for example \"<i>Main article</i>\" or \"<i>Experiment data readings</i>\".",
-  "bitstream.edit.form.description.hint": "اختيارياً، قم بتقديم وصف مختصر للملف، على سبيل المثال \"<i>المقال الرئيسي</i>\" أو \"<i>قراءات بيانات التجربة</i>\".",
+  "bitstream.edit.form.description.hint": 'اختيارياً، قم بتقديم وصف مختصر للملف، على سبيل المثال "<i>المقال الرئيسي</i>" أو "<i>قراءات بيانات التجربة</i>".',
 
   // "bitstream.edit.form.description.label": "Description",
   "bitstream.edit.form.description.label": "الوصف",
@@ -1483,13 +1482,13 @@
   "bitstream.edit.form.newFormat.label": "وصف التنسيق الجديد",
 
   // "bitstream.edit.form.newFormat.hint": "The application you used to create the file, and the version number (for example, \"<i>ACMESoft SuperApp version 1.5</i>\").",
-  "bitstream.edit.form.newFormat.hint": "التطبيق الذي قمت باستخدامه لإنشاء الملف، ورقم الإصدار (على سبيل المثال: \"<i>ACMESoft SuperApp الإصدار 1.5</i>\").",
+  "bitstream.edit.form.newFormat.hint": 'التطبيق الذي قمت باستخدامه لإنشاء الملف، ورقم الإصدار (على سبيل المثال: "<i>ACMESoft SuperApp الإصدار 1.5</i>").',
 
   // "bitstream.edit.form.primaryBitstream.label": "Primary File",
   "bitstream.edit.form.primaryBitstream.label": "تدفق البت الرئيسي",
 
   // "bitstream.edit.form.selectedFormat.hint": "If the format is not in the above list, <b>select \"format not in list\" above</b> and describe it under \"Describe new format\".",
-  "bitstream.edit.form.selectedFormat.hint": "إذا لم يكن التنسيق موجوداً في القائمة أعلاه، <b>قم بتحديد \"التنسيق غير موجود في القائمة\" أعلاه</b> وقم بوصفه أدنى  \"وصف تنسيق جديد\".",
+  "bitstream.edit.form.selectedFormat.hint": 'إذا لم يكن التنسيق موجوداً في القائمة أعلاه، <b>قم بتحديد "التنسيق غير موجود في القائمة" أعلاه</b> وقم بوصفه أدنى  "وصف تنسيق جديد".',
 
   // "bitstream.edit.form.selectedFormat.label": "Selected Format",
   "bitstream.edit.form.selectedFormat.label": "التنسيق المحدد",
@@ -1792,7 +1791,7 @@
   "collection.delete.notification.success": "تم حذف الحاوية بنجاح",
 
   // "collection.delete.text": "Are you sure you want to delete collection \"{{ dso }}\"",
-  "collection.delete.text": "هل أنت متأكد من أنك تريد حذف الحاوية \"{{ dso }}\"",
+  "collection.delete.text": 'هل أنت متأكد من أنك تريد حذف الحاوية "{{ dso }}"',
 
   // "collection.edit.delete": "Delete this collection",
   "collection.edit.delete": "حذف هذه الحاوية",
@@ -1813,7 +1812,7 @@
   "collection.edit.item-mapper.cancel": "إلغاء",
 
   // "collection.edit.item-mapper.collection": "Collection: \"<b>{{name}}</b>\"",
-  "collection.edit.item-mapper.collection": "الحاوية: \"<b>{{name}}</b>\"",
+  "collection.edit.item-mapper.collection": 'الحاوية: "<b>{{name}}</b>"',
 
   // "collection.edit.item-mapper.confirm": "Map selected items",
   "collection.edit.item-mapper.confirm": "تخطيط المواد المحددة",
@@ -2008,7 +2007,7 @@
   "collection.edit.template.error": "حدث خطأ أثناء استرداد عنصر القالب",
 
   // "collection.edit.template.head": "Edit Template Item for Collection \"{{ collection }}\"",
-  "collection.edit.template.head": "تحرير عنصر القالب للحاوية \"{{ collection }}\"",
+  "collection.edit.template.head": 'تحرير عنصر القالب للحاوية "{{ collection }}"',
 
   // "collection.edit.template.label": "Template item",
   "collection.edit.template.label": "عنصر القالب",
@@ -2227,7 +2226,7 @@
   "community.delete.notification.success": "تم حذف المجتمع بنجاح",
 
   // "community.delete.text": "Are you sure you want to delete community \"{{ dso }}\"",
-  "community.delete.text": "هل أنت متأكد من أنك تريد حذف المجتمع \"{{ dso }}\"",
+  "community.delete.text": 'هل أنت متأكد من أنك تريد حذف المجتمع "{{ dso }}"',
 
   // "community.edit.delete": "Delete this community",
   "community.edit.delete": "حذف هذا المجتمع",
@@ -2601,7 +2600,7 @@
   "curation.form.handle.hint": "تلميح: قم بإدخال [your-handle-prefix]/0 لتشغيل مهمة عبر الموقع بأكمله (قد لا تدعم جميع المهام هذه الإمكانية)",
 
   // "deny-request-copy.email.message": "Dear {{ recipientName }},\nIn response to your request I regret to inform you that it's not possible to send you a copy of the file(s) you have requested, concerning the document: \"{{ itemUrl }}\" ({{ itemName }}), of which I am an author.\n\nBest regards,\n{{ authorName }} <{{ authorEmail }}>",
-  "deny-request-copy.email.message": "عزيزي {{ recipientName }},\nردًا على طلبك، يؤسفني إبلاغك أنه لا يمكن إرسال نسخة من الملف الذي قمت بطلبه، فيما يتعلق بالوثيقة: \"{{ itemUrl }}\" ({{ itemName }}), والتي قمت بتأليفها.\n\nمع أطيب التحيات,\n{{ authorName }} <{{ authorEmail }}>",
+  "deny-request-copy.email.message": 'عزيزي {{ recipientName }},\nردًا على طلبك، يؤسفني إبلاغك أنه لا يمكن إرسال نسخة من الملف الذي قمت بطلبه، فيما يتعلق بالوثيقة: "{{ itemUrl }}" ({{ itemName }}), والتي قمت بتأليفها.\n\nمع أطيب التحيات,\n{{ authorName }} <{{ authorEmail }}>',
 
   // "deny-request-copy.email.subject": "Request copy of document",
   "deny-request-copy.email.subject": "طلب نسخة من وثيقة",
@@ -2772,10 +2771,10 @@
   "confirmation-modal.export-batch.confirm": "تصدير",
 
   // "confirmation-modal.delete-eperson.header": "Delete EPerson \"{{ dsoName }}\"",
-  "confirmation-modal.delete-eperson.header": "حذف الشخص الإلكتروني \"{{ dsoName }}\"",
+  "confirmation-modal.delete-eperson.header": 'حذف الشخص الإلكتروني "{{ dsoName }}"',
 
   // "confirmation-modal.delete-eperson.info": "Are you sure you want to delete EPerson \"{{ dsoName }}\"",
-  "confirmation-modal.delete-eperson.info": "هل أنت متأكد من أنك تريد حذف الشخص الإلكتروني \"{{ dsoName }}\"",
+  "confirmation-modal.delete-eperson.info": 'هل أنت متأكد من أنك تريد حذف الشخص الإلكتروني "{{ dsoName }}"',
 
   // "confirmation-modal.delete-eperson.cancel": "Cancel",
   "confirmation-modal.delete-eperson.cancel": "إلغاء",
@@ -2799,7 +2798,7 @@
   "confirmation-modal.delete-subscription.header": "حذف الاشتراك",
 
   // "confirmation-modal.delete-subscription.info": "Are you sure you want to delete subscription for \"{{ dsoName }}\"",
-  "confirmation-modal.delete-subscription.info": "هل أنت متأكد من أنك تريد حذف الاشتراك لـ \"{{ dsoName }}\"",
+  "confirmation-modal.delete-subscription.info": 'هل أنت متأكد من أنك تريد حذف الاشتراك لـ "{{ dsoName }}"',
 
   // "confirmation-modal.delete-subscription.cancel": "Cancel",
   "confirmation-modal.delete-subscription.cancel": "إلغاء",
@@ -2844,7 +2843,7 @@
   "error.search-results": "حدث خطأ أثناء جلب نتائج البحث",
 
   // "error.invalid-search-query": "Search query is not valid. Please check <a href=\"https://solr.apache.org/guide/query-syntax-and-parsing.html\" target=\"_blank\">Solr query syntax</a> best practices for further information about this error.",
-  "error.invalid-search-query": "استعلام البحث غير صالح. يرجى مراجعة <a href=\"https://solr.apache.org/guide/query-syntax-and-parsing.html\" target=\"_blank\">بناء جملة استعلام Solr</a> أفضل الممارسات للحصول على مزيد من المعلومات حول هذا الخطأ.",
+  "error.invalid-search-query": 'استعلام البحث غير صالح. يرجى مراجعة <a href="https://solr.apache.org/guide/query-syntax-and-parsing.html" target="_blank">بناء جملة استعلام Solr</a> أفضل الممارسات للحصول على مزيد من المعلومات حول هذا الخطأ.',
 
   // "error.sub-collections": "Error fetching sub-collections",
   "error.sub-collections": "حدث خطأ أثناء جلب الحاويات الفرعية",
@@ -2909,8 +2908,8 @@
   // "file-section.error.header": "Error obtaining files for this item",
   "file-section.error.header": "حدث خطأ أثناء الحصول على ملفات لهذه المادة",
 
-  // "footer.copyright": "copyright © 2002-{{ year }}",
-  "footer.copyright": "حقوق النشر © 2002-{{ year }}",
+  // "footer.copyright": "copyright © 2014-{{ year }}",
+  "footer.copyright": "حقوق النشر © 2014-{{ year }}",
 
   // "footer.link.dspace": "DSpace software",
   "footer.link.dspace": "برنامج دي سبيس",
@@ -3599,7 +3598,7 @@
   "item.edit.item-mapper.head": "مخطط المادة - تخطيط مادة إلى حاويات",
 
   // "item.edit.item-mapper.item": "Item: \"<b>{{name}}</b>\"",
-  "item.edit.item-mapper.item": "المادة: \"<b>{{name}}</b>\"",
+  "item.edit.item-mapper.item": 'المادة: "<b>{{name}}</b>"',
 
   // "item.edit.item-mapper.no-search": "Please enter a query to search",
   "item.edit.item-mapper.no-search": "يرجى إدخال استعلام للبحث",
@@ -3672,7 +3671,7 @@
   "item.edit.metadata.edit.buttons.unedit": "توقف عن التحرير",
 
   // "item.edit.metadata.edit.buttons.virtual": "This is a virtual metadata value, i.e. a value inherited from a related entity. It can’t be modified directly. Add or remove the corresponding relationship in the \"Relationships\" tab",
-  "item.edit.metadata.edit.buttons.virtual": "هذه قيمة ميتاداتا افتراضية، أي قيمة موروثة من كينونة ذات صلة. ولا يمكن تعديلها مباشرة. إضافة أو إزالة العلاقة المقابلة في تبويب \"العلاقات\" ",
+  "item.edit.metadata.edit.buttons.virtual": 'هذه قيمة ميتاداتا افتراضية، أي قيمة موروثة من كينونة ذات صلة. ولا يمكن تعديلها مباشرة. إضافة أو إزالة العلاقة المقابلة في تبويب "العلاقات" ',
 
   // "item.edit.metadata.empty": "The item currently doesn't contain any metadata. Click Add to start adding a metadata value.",
   "item.edit.metadata.empty": "لا تحتوي المادة حاليًا على أي ميتاداتا. انقر فوق إضافة لبدء إضافة قيمة ميتاداتا.",
@@ -4102,10 +4101,10 @@
   "workflow-item.search.result.delete-supervision.modal.confirm": "حذف",
 
   // "workflow-item.search.result.notification.deleted.success": "Successfully deleted supervision order \"{{name}}\"",
-  "workflow-item.search.result.notification.deleted.success": "تم حذف أمر الإشراف بنجاح \"{{name}}\"",
+  "workflow-item.search.result.notification.deleted.success": 'تم حذف أمر الإشراف بنجاح "{{name}}"',
 
   // "workflow-item.search.result.notification.deleted.failure": "Failed to delete supervision order \"{{name}}\"",
-  "workflow-item.search.result.notification.deleted.failure": "فشل في حذف أمر الإشراف \"{{name}}\"",
+  "workflow-item.search.result.notification.deleted.failure": 'فشل في حذف أمر الإشراف "{{name}}"',
 
   // "workflow-item.search.result.list.element.supervised-by": "Supervised by:",
   "workflow-item.search.result.list.element.supervised-by": "تحت إشراف:",
@@ -7788,7 +7787,7 @@
   "submission.sections.describe.relationship-lookup.selection-tab.title": "نتائج البحث",
 
   // "submission.sections.describe.relationship-lookup.name-variant.notification.content": "Would you like to save \"{{ value }}\" as a name variant for this person so you and others can reuse it for future submissions? If you don't you can still use it for this submission.",
-  "submission.sections.describe.relationship-lookup.name-variant.notification.content": "هل ترغب في حفظe \"{{ value }}\" كمتغير اسم لهذا الشخص حتى تتمكن أنت والآخرون من إعادة استخدامه لعمليات التقديم المستقبلية؟ إذا لم تقم بذلك، فلا يزال بإمكانك استخدامه لهذا التقديم.",
+  "submission.sections.describe.relationship-lookup.name-variant.notification.content": 'هل ترغب في حفظe "{{ value }}" كمتغير اسم لهذا الشخص حتى تتمكن أنت والآخرون من إعادة استخدامه لعمليات التقديم المستقبلية؟ إذا لم تقم بذلك، فلا يزال بإمكانك استخدامه لهذا التقديم.',
 
   // "submission.sections.describe.relationship-lookup.name-variant.notification.confirm": "Save a new name variant",
   "submission.sections.describe.relationship-lookup.name-variant.notification.confirm": "حفظ متغير اسم جديد",
@@ -8245,7 +8244,7 @@
   "submission.workflow.tasks.claimed.approve": "قبول",
 
   // "submission.workflow.tasks.claimed.approve_help": "If you have reviewed the item and it is suitable for inclusion in the collection, select \"Approve\".",
-  "submission.workflow.tasks.claimed.approve_help": "إذا قمت بمراجعة المادة وكانت ملائمة للإدراج في الحاوية، اختر  \"قبول\".",
+  "submission.workflow.tasks.claimed.approve_help": 'إذا قمت بمراجعة المادة وكانت ملائمة للإدراج في الحاوية، اختر  "قبول".',
 
   // "submission.workflow.tasks.claimed.edit": "Edit",
   "submission.workflow.tasks.claimed.edit": "تحرير",
@@ -8275,7 +8274,7 @@
   "submission.workflow.tasks.claimed.reject.submit": "رفض",
 
   // "submission.workflow.tasks.claimed.reject_help": "If you have reviewed the item and found it is <strong>not</strong> suitable for inclusion in the collection, select \"Reject\".  You will then be asked to enter a message indicating why the item is unsuitable, and whether the submitter should change something and resubmit.",
-  "submission.workflow.tasks.claimed.reject_help": "إذا قمت بمراجعة المادة ووجدتها <strong>غير</strong> ملائمة للإدراج في الحاوية، اختر \"رفض\". سيُطلب منك إدخال رسالة لتوضيح سبب عدم ملاءمة المادة، وما إذا كان يجب على المقدم إجراء بعض التغييرات وإعادة التقديم.",
+  "submission.workflow.tasks.claimed.reject_help": 'إذا قمت بمراجعة المادة ووجدتها <strong>غير</strong> ملائمة للإدراج في الحاوية، اختر "رفض". سيُطلب منك إدخال رسالة لتوضيح سبب عدم ملاءمة المادة، وما إذا كان يجب على المقدم إجراء بعض التغييرات وإعادة التقديم.',
 
   // "submission.workflow.tasks.claimed.return": "Return to pool",
   "submission.workflow.tasks.claimed.return": "إعادة إلى الصحن",
@@ -8360,7 +8359,7 @@
   "subscriptions.modal.close": "إغلاق",
 
   // "subscriptions.modal.delete-info": "To remove this subscription, please visit the \"Subscriptions\" page under your user profile",
-  "subscriptions.modal.delete-info": "لإزالة هذا الاشتراك، يرجى زيارة صفحة \"الاشتراكات\" أدنى ملف تعريف المستخدم الخاص بك",
+  "subscriptions.modal.delete-info": 'لإزالة هذا الاشتراك، يرجى زيارة صفحة "الاشتراكات" أدنى ملف تعريف المستخدم الخاص بك',
 
   // "subscriptions.modal.new-subscription-form.type.content": "Content",
   "subscriptions.modal.new-subscription-form.type.content": "المحتوى",
@@ -8450,7 +8449,7 @@
   "thumbnail.person.placeholder": "لا تتوافر صورة للملف الشخصي",
 
   // "title": "DSpace",
-  "title": "دي سبيس",
+  title: "دي سبيس",
 
   // "vocabulary-treeview.header": "Hierarchical tree view",
   "vocabulary-treeview.header": "عرض الشجرة الهرمية",
@@ -8993,7 +8992,7 @@
   "person.page.orcid.synchronization-mode.label": "وضع المزامنة",
 
   // "person.page.orcid.synchronization-mode-message": "Please select how you would like synchronization to ORCID to occur. The options include \"Manual\" (you must send your data to ORCID manually), or \"Batch\" (the system will send your data to ORCID via a scheduled script).",
-  "person.page.orcid.synchronization-mode-message": "يرجى تحديد الطريقة التي تريد أن تتم بها المزامنة مع أوركيد. تتضمن الخيارات \"يدوي\" (يجب عليك إرسال بياناتك إلى أوركيد يدوياً)، أو \"بالدفعة\" (سيقوم النظام بإرسال بياناتك إلى أوركيد عبر برنامج نصي مجدول).",
+  "person.page.orcid.synchronization-mode-message": 'يرجى تحديد الطريقة التي تريد أن تتم بها المزامنة مع أوركيد. تتضمن الخيارات "يدوي" (يجب عليك إرسال بياناتك إلى أوركيد يدوياً)، أو "بالدفعة" (سيقوم النظام بإرسال بياناتك إلى أوركيد عبر برنامج نصي مجدول).',
 
   // "person.page.orcid.synchronization-mode-funding-message": "Select whether to send your linked Project entities to your ORCID record's list of funding information.",
   "person.page.orcid.synchronization-mode-funding-message": "حدد ما إذا كنت تريد إرسال كينونات المشروع المرتبطة إلى قائمة معلومات التمويل الخاصة بتسجيلة أوركيد الخاصة بك.",
@@ -9268,7 +9267,7 @@
 
   // "coar-notify-support-title.content": "Here, we fully support the COAR Notify protocol, which is designed to enhance the communication between repositories. To learn more about the COAR Notify protocol, visit the <a href=\\\"https://notify.coar-repositories.org/\\\">COAR Notify website</a>.",
   // TODO New key - Add a translation
-  "coar-notify-support-title.content": "Here, we fully support the COAR Notify protocol, which is designed to enhance the communication between repositories. To learn more about the COAR Notify protocol, visit the <a href=\\\"https://notify.coar-repositories.org/\\\">COAR Notify website</a>.",
+  "coar-notify-support-title.content": 'Here, we fully support the COAR Notify protocol, which is designed to enhance the communication between repositories. To learn more about the COAR Notify protocol, visit the <a href=\\"https://notify.coar-repositories.org/\\">COAR Notify website</a>.',
 
   // "coar-notify-support.ldn-inbox.title": "LDN InBox",
   // TODO New key - Add a translation
@@ -10646,5 +10645,4 @@
   // "search.filters.filter.notifyEndorsement.label": "Search Notify Endorsement",
   // TODO New key - Add a translation
   "search.filters.filter.notifyEndorsement.label": "Search Notify Endorsement",
-
 }

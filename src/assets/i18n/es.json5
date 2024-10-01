@@ -2424,7 +2424,7 @@
   "file-section.error.header": "Error al obtener archivos para este ítem",
 
   // "footer.copyright": "copyright © 2002-{{ year }}",
-  "footer.copyright": "copyright © 2002-{{ year }}",
+  "footer.copyright": "copyright © 2014-{{ year }}",
 
   // "footer.link.dspace": "DSpace software",
   "footer.link.dspace": "Software DSpace",

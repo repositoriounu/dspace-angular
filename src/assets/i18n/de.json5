@@ -1819,7 +1819,7 @@
   "file-section.error.header": "Fehler beim Abrufen der Dateien für dieses Item",
 
   // "footer.copyright": "copyright © 2002-{{ year }}",
-  "footer.copyright": "Copyright © 2002-{{ year }}",
+  "footer.copyright": "Copyright © 2014-{{ year }}",
 
   // "footer.link.dspace": "DSpace software",
   "footer.link.dspace": "DSpace Software",
