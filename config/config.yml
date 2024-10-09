@@ -3,8 +3,12 @@ ui:
   host: 0.0.0.0
   port: 4000
   nameSpace: /
+
 rest:
   ssl: true
   host: apirepositorio.unu.edu.pe
   port: 443
   nameSpace: /server
+
+browseBy:
+  defaultLowerLimit: 2014
